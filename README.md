@@ -1,4 +1,4 @@
-# Data Science Bootcamp Projects
+# Data Science Projects
 
 All my data Projects in the bootcamp. There are 10 Sprints as follow
 
