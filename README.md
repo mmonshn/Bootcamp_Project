@@ -13,4 +13,4 @@ All my data Projects in the bootcamp. There are 10 Sprints as follow
 - Python for Data Analyst
 - Dashboard
 
-Virifed Badge
+Virifed Badge: 
