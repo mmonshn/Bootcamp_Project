@@ -6,7 +6,7 @@ All my data Projects in the bootcamp. There are 10 Sprints as follow
 - SQL
 - R Programmng
 - Data Tranformation
-- Data Visual
+- Data Visualization
 - Statistics for Data Analyst
 - Machine Learning for Data Analyst
 - Python Programming
