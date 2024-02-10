@@ -1,1 +1,1 @@
-# Projects related to the Faculty of Computer Engineering
+# Projects and Labs related to the Faculty of Computer Engineering
