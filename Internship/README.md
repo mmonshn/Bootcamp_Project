@@ -1,18 +1,17 @@
 # Internship
 
 
-**ชื่อ - สกุล** นาย สัณหณัฐ พรมจรรย์	**รหัสนักศึกษา** 63070501069
 
-**คณะ** วิศวกรรมศาสตร์ 		**ภาควิชา** วิศวกรรมคอมพิวเตอร์
+**Name - Surname** Mr. Sanhanat Promchan **Student ID** 63070501069
 
-**บริษัท / หน่วยงานที่ฝึก** SKY ICT PUBLIC COMPANY LIMITED / NEBULA TECH UNIT
+**Faculty** Engineering **Department** Computer Engineering
 
-**ฝึกงานระหว่างวันที่**  1 มิถุนายน 2566   ถึงวันที่  4 สิงหาคม 2566
+**Company that internship** SKY ICT PUBLIC COMPANY LIMITED / NEBULA TECH UNIT
 
-**หน้าที่ความรับผิดชอบของนักศึกษา**
+**Internship between** 1 June 2023 to 4 August 2023
 
--	Data Visualization ข้อมูลรปภ. และการบริหารจัดการ ดูได้จาก [Security Guard](https://github.com/monsanhanat/Portfolio/tree/main/Internship/Security%20Guard)
--	Data preprocessing ซี่งข้อมูลมาจาก Data Lake ดูได้จาก [LPR](lpr_log), [Grafana](Grafana)
--	Convert PDF to Excel format by Python.  ดูได้จาก [PDF to Excel](pdf_to_excel)
--	Vehicle Detection by YOLOv8 model  ดูได้จาก [Vehicle Detection](yolov8_detect_car)
+-	Data Visualization ข้อมูลรปภ. และการบริหารจัดการ. from [Security Guard](https://github.com/monsanhanat/Portfolio/tree/main/Internship/Security%20Guard)
+-	Data preprocessing ซี่งข้อมูลมาจาก Data Lake. from [LPR](lpr_log), [Grafana](Grafana)
+-	Convert PDF to Excel format by Python.  from [PDF to Excel](pdf_to_excel)
+-	Vehicle Detection by YOLOv8 model.  from [Vehicle Detection](yolov8_detect_car)
 -	Dataset management
