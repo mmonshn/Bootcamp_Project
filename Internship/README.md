@@ -2,7 +2,7 @@
 
 
 
-**Name - Surname:** Mr. Sanhanat Promchan   **Student ID:** 63070501069
+**Name - Surname:** Mr. Sanhanat Prommajan   **Student ID:** 63070501069
 
 **Faculty:** Engineering 
 
@@ -12,8 +12,8 @@
 
 **Internship Between:** 1 June 2023 to 4 August 2023
 
--	Data Visualization ข้อมูลรปภ. และการบริหารจัดการ. from [Security Guard](https://github.com/monsanhanat/Portfolio/tree/main/Internship/Security%20Guard)
--	Data preprocessing ซี่งข้อมูลมาจาก Data Lake. from [LPR](lpr_log), [Grafana](Grafana)
+-	Data Visualization Security and management information. from [Security Guard](https://github.com/monsanhanat/Portfolio/tree/main/Internship/Security%20Guard)
+-	Data preprocessing Where the information comes from Data Lake. from [LPR](lpr_log), [Grafana](Grafana)
 -	Convert PDF to Excel format by Python.  from [PDF to Excel](pdf_to_excel)
 -	Vehicle Detection by YOLOv8 model.  from [Vehicle Detection](yolov8_detect_car)
 -	Dataset management
