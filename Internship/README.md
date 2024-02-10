@@ -11,8 +11,8 @@
 
 **หน้าที่ความรับผิดชอบของนักศึกษา**
 
--	Data Visualization ข้อมูลรปภ. และการบริหารจัดการ [Data Visualization](Security Guard.md)
--	Data preprocessing ซี่งข้อมูลมาจาก Data Lake [LPR](lpr_log), [Grafana](Grafana)
--	Convert PDF to Excel format by Python.  [PDF to Excel](pdf_to_excel)
--	Vehicle Detection by YOLOv8 model  [Vehicle Detection](yolov8_detect_car)
+-	Data Visualization ข้อมูลรปภ. และการบริหารจัดการ ดูได้จาก [Data Visualization](Security Guard)
+-	Data preprocessing ซี่งข้อมูลมาจาก Data Lake ดูได้จาก [LPR](lpr_log), [Grafana](Grafana)
+-	Convert PDF to Excel format by Python.  ดูได้จาก [PDF to Excel](pdf_to_excel)
+-	Vehicle Detection by YOLOv8 model  ดูได้จาก [Vehicle Detection](yolov8_detect_car)
 -	Dataset management
