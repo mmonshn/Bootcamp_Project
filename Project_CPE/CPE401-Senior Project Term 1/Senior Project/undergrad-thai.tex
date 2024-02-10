@@ -1,0 +1,1411 @@
+%%%%%% Run at command line, run
+%%%%%% xelatex grad-sample.tex 
+%%%%%% for a few times to generate the output pdf file
+\documentclass[12pt,oneside,openright,a4paper]{cpe-thai-project}
+
+
+\usepackage{polyglossia}
+\setdefaultlanguage{thai}
+\setotherlanguage{english}
+\newfontfamily\thaifont[Script=Thai,Scale=1.23]{TH Sarabun New}
+\defaultfontfeatures{Mapping=tex-text,Scale=1.23,LetterSpace=0.0}
+\setmainfont[Scale=1.23,LetterSpace=0,WordSpace=1.0,FakeStretch=1.0,Mapping=tex-text]{TH Sarabun New}
+\XeTeXlinebreaklocale "th"	
+\XeTeXlinebreakskip = 0pt plus 0pt
+\emergencystretch=10pt
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Customize below to suit your needs 
+% The ones that are optional can be left blank. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% First line of title
+\def\disstitleone{AI-TPR: AI-Web Application for Travel Place Recommendations}   
+% Second line of title
+\def\disstitletwo{}   
+% Your first name and lastname
+\def\dissauthor{Mr. Kitiphat Ruangamornwat}   % 1st member
+%%% Put other group member names here ..
+\def\dissauthortwo{Mr. Sanhanat Prommajan}   % 2nd member (optional)
+\def\dissauthorthree{}   % 3rd member (optional)
+
+% The degree that you're persuing..
+\def\dissdegree{Bachelor of Engineering} % Name of the degree
+\def\dissdegreeabrev{B.Eng} % Abbreviation of the degree
+\def\dissyear{2023}                   % Year of submission
+\def\thaidissyear{2566}               % Year of submission (B.E.)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Your project and independent study committee..
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\dissadvisor{Taweechai Nuntawisuttiwong, Ph.D.}  % Advisor
+%%% Leave it empty if you have no Co-advisor
+\def\disscoadvisor{}  % Co-advisor
+\def\disscoadvisortwo{}  % Co-advisor
+\def\disscommitteetwo{Kharittha Jangsamsi, Ph.D.}  % 3rd committee member (optional)
+\def\disscommitteethree{Asst.Prof. Suthathip Maneewongvatana, Ph.D.}   % 4th committee member (optional) 
+\def\disscommitteefour{Sansiri Tarnpradab, Ph.D.}    % 5th committee member (optional) 
+
+\def\worktype{Project} %%  Project or Independent study
+\def\disscredit{3}   %% 3 credits or 6 credits
+
+
+\def\fieldofstudy{Computer Engineering} 
+\def\department{Computer Engineering} 
+\def\faculty{Engineering}
+
+\def\thaifieldofstudy{วิศวกรรมคอมพิวเตอร์} 
+\def\thaidepartment{วิศวกรรมคอมพิวเตอร์} 
+\def\thaifaculty{วิศวกรรมศาสตร์}
+ 
+\def\appendixnames{Appendix} %%% Appendices or Appendix
+
+\def\thaiworktype{ปริญญานิพนธ์} %  Project or research project % 
+\def\thaidisstitleone{AI-TPR}
+\def\thaidisstitletwo{เว็บแอปพลิเคชัน AI สำหรับแนะนำสถานที่ท่องเที่ยว}   
+\def\thaidissauthor{นายกิติพัฒน์ เรืองอมรวัฒน์}
+\def\thaidissauthortwo{นายสัณหณัฐ พรมจรรย์} %Optional
+\def\thaidissauthorthree{} %Optional
+
+\def\thaidissadvisor{ดร.ทวีชัย นันทวิสุทธิวงศ์}
+%% Leave this empty if you have no co-advisor
+\def\thaidisscoadvisor{} %Optional
+\def\thaidisscoadvisortwo{} %Optional
+\def\thaidissdegree{วิศวกรรมศาสตรบัณฑิต}
+
+% Change the line spacing here...
+\linespread{1.15}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End of personal customization.  Do not modify from this part 
+% to \begin{document} unless you know what you are doing...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%% Dissertation style %%%%%%%%%%%
+%\linespread{1.6} % Double-spaced  
+%%\oddsidemargin    0.5in
+%%\evensidemargin   0.5in
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\renewcommand{\subfigtopskip}{10pt}
+%\renewcommand{\subfigbottomskip}{-5pt} 
+%\renewcommand{\subfigcapskip}{-6pt} %vertical space between caption
+%                                    %and figure.
+%\renewcommand{\subfigcapmargin}{0pt}
+
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\textfraction}{0.1}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+
+\def\QED{\mbox{\rule[0pt]{1.5ex}{1.5ex}}}
+\def\proof{\noindent\hspace{2em}{\itshape Proof: }}
+\def\endproof{\hspace*{\fill}~\QED\par\endtrivlist\unskip}
+%\newenvironment{proof}{{\sc Proof:}}{~\hfill \blacksquare}
+%% The hyperref package redefines the \appendix. This one 
+%% is from the dissertation.cls
+%\def\appendix#1{\iffirstappendix \appendixcover \firstappendixfalse \fi \chapter{#1}}
+%\renewcommand{\arraystretch}{0.8}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{ragged2e}
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\usepackage{multirow}
+
+\begin{document}
+
+\pdfstringdefDisableCommands{%
+\let\MakeUppercase\relax
+}
+
+\begin{center}
+  \includegraphics[width=2.8cm]{logo02.jpg}
+\end{center}
+\vspace*{-1cm}
+
+\maketitlepage
+\makesignaturepage 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% English abstract %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\abstract
+\setlength{\parindent}{1cm}
+Tourism in Thailand has long been an important source of income. But due to the COVID-19 crisis In the past, tourism in Thailand has been sluggish and disrupted. As a result, tourism in Thailand was temporarily shut down. Later, after the COVID-19 crisis has passed. Tourism in Thailand has begun to become jolly and lively again. But additional problems are still encountered because tourists do not travel for a long period of time, resulting in unavailability of tourism. As a result, tourists need more detailed information and advice in order to solve these problems.
+
+Therefore, the organizing team is aware of the problems in tourism in Thailand and is interested in developing a web application that uses Artificial Intelligence (AI) via Chatbot to promote tourism to recover and have Lively again This web application will help tourists in planning their trips. and easier access to Thai tourist attractions This gives the tourism industry and entrepreneurs more opportunities for growth. and offer travel experiences that are full of challenge and joy.
+
+\begin{flushleft}
+\begin{tabular*}{\textwidth}{@{}lp{0.8\textwidth}}
+\textbf{Keywords}: & Web application / Travel place / Artificial Intelligence (AI) / AI Chatbot / Generative AI / Natural Language Processing (NLP) / Large Language Models (LLM) / Reinforcement Learning from Human Feedback (RLHF) / Generative Pre-trained Transformers (GPT)
+\end{tabular*}
+\end{flushleft}
+\endabstract
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Thai abstract here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% {\newfontfamily\thaifont{TH Sarabun New:script=thai}[Scale=1.3]
+% \XeTeXlinebreaklocale "th_TH"	
+% \thaifont
+\thaiabstract
+\setlength{\parindent}{1cm}
+การท่องเที่ยวในประเทศไทยเป็นแหล่งรายได้หลักที่สำคัญมานาน แต่เนื่องจากในช่วงวิกฤติการณ์โควิด-19 ที่ผ่านมาการท่องเที่ยวในไทยซบเซาและหยุดชะงัก ส่งผลให้การท่องเที่ยวในไทยนั้นถูกปิดตัวลงชั่วขณะ ต่อมาหลังจากที่ผ่านพ้นวิกฤติโควิด-19 การท่องเที่ยวในไทยเริ่มกลับมาครื้นเครงและมีชีวิตชีวาอีกครั้ง แต่ก็ยังพบปัญหาที่ตามมาเพิ่มอีกเนื่องจากนักท่องเที่ยวไม่ได้ท่องเที่ยวเป็นระยะเวลานานส่งผลให้เกิดความไม่พร้อมในการท่องเที่ยว ทำให้นักท่องเที่ยวต้องการข้อมูลรายละเอียดและคำแนะนำมากขึ้นเพื่่อที่จะแก้ไขปัญหาเหล่านี้
+
+ดังนั้นทางคณะผู้จัดทำตระหนักเห็นถึงปัญหาในด้านการท่องเที่ยวในประเทศไทยจึงได้มีความสนใจในการพัฒนาเว็บแอปพลิเคชันที่ใช้ Artificial Intelligence (AI) ผ่านทาง Chatbot เพื่อส่งเสริมการท่องเที่ยวให้กลับมาฟื้นตัวและมีชีวิตชีวาอีกครั้ง โดยเว็บแอปพลิเคชันนี้จะช่วยนักท่องเที่ยวในการวางแผนท่องเที่ยว และเข้าถึงสถานที่ท่องเที่ยวไทยได้ง่ายขึ้น ทำให้อุตสาหกรรมท่องเที่ยวและผู้ประกอบการมีโอกาสเติบโตมากขึ้น และนำเสนอประสบการณ์ท่องเที่ยวที่เต็มไปด้วยความท้าทายและความสุข
+
+\begin{flushleft}
+\begin{tabular*}{\textwidth}{@{}lp{0.8\textwidth}}
+ & \\
+
+\textbf{คำสำคัญ}: & เว็บแอปพลิเคชัน / สถานที่ท่องเที่ยว / ปัญญาประดิษฐ์ / แชทบอทปัญญาประดิษฐ์ / ประมวลผลภาษาธรรมชาติ  / โมเดลภาษาขนาดใหญ่ / การเรียนรู้แบบเสริมจากคำแนะนำของมนุษย์ / โมเดลทรานส์ฟอร์เมอร์ที่ถูกฝึกไว้ล่วงหน้า
+\end{tabular*}
+\end{flushleft}
+\endabstract
+
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%% Acknowledgments %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\preface
+การจัดทําปริญญานิพนธ์ในครั้งนี้สําเร็จลุล่วงได้ด้วยความช่วยเหลือจาก ดร.ทวีชัย นันทวิสุทธิวงศ์ ซึ่งเป็นอาจารย์ที่ปรึกษา ได้ให้ความ
+กรุณาสละเวลาให้คําปรึกษา คําแนะนํา และข้อคิดเห็นอันเป็นประโยชน์ในการจัดทําปริญญานิพนธ์ และยังได้กรุณาให้ความช่วยเหลือ ใน
+ตลอดระยะเวลาในการจัดทําปริญญานิพนธ์ครั้งนี้ ทางคณะผู้จัดทําปริญญานิพนธ์จึงขอกราบขอบพระคุณอาจารย์เป็นอย่างยิ่ง
+
+ขอขอบพระคุณ (คณะกรรมการ) ที่ได้สละเวลามาร่วมเป็นคณะกรรมการตรวจสอบปริญญานิพนธ์ชิ้นนี้ รวมถึงให้ข้อคิดเห็นและคํา
+แนะนําต่าง ๆ ที่เป็นประโยชน์ต่อการจัดทําปริญญานิพนธ์
+
+ท้ายที่สุดนี้ ปริญญานิพนธ์นี้จะไม่สําเร็จลุล่วงได้เลยหากไม่มีบิดา มารดา ผู้ปกครอง เพื่อน รุ่นพี่ในภาควิชาวิศวกรรมคอมพิวเตอร์ที่
+ให้ความช่วยเหลือ การสนับสนุน รวมทั้งคอยเป็นกําลังใจให้กับคณะผู้จัดทําสําคัญเสมอมา คณะผู้จัดทําหวังว่าปริญญานิพนธ์นี้จะก่อให้เกิด
+ประโยชน์แก่ผู้ที่สนใจการเดินทางท่องเที่ยว และผู้ที่สนใจแอปพลิเคชันนี้ไม่มากก็น้อย \\
+
+\begin{flushright}คณะผู้จัดทําปริญญานิพนธ์\end{flushright}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% ToC, List of figures/tables %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The three commands below automatically generate the table 
+% of content, list of tables and list of figures
+\tableofcontents                    
+\listoftables
+\listoffigures                      
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%% List of symbols page %%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% You have to add this manually..
+%\listofsymbols
+%\begin{flushleft}
+%\begin{tabular}{@{}p{0.07\textwidth}p{0.7\textwidth}p{0.1\textwidth}}
+%\textbf{SYMBOL}  & & \textbf{UNIT} \\[0.2cm]
+%$\alpha$ & Test variable\hfill & m$^2$ \\
+%$\lambda$ & Interarival rate\hfill &  jobs/second\\
+%$\mu$ & Service rate\hfill & jobs/second\\
+%\end{tabular}
+%\end{flushleft}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%% List of vocabs & terms %%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% You also have to add this manually..
+\listofvocab
+\begin{flushleft}
+\begin{tabular}{@{}p{1in}@{=\extracolsep{0.5in}}p{0.73\textwidth}}
+AI &  Artificial Intelligence, which refers to the development of computer systems that can perform tasks that typically require human intelligence. These tasks include learning, reasoning, problem-solving, perception, language understanding, and even speech recognition. AI technology aims to create machines or software that can mimic cognitive functions, enabling them to perform tasks intelligently.\\
+Chatbot & computer program designed to simulate conversation with human users, especially over the Internet. These programs are often powered by artificial intelligence (AI) or machine learning algorithms, allowing them to understand and respond to user inputs in a natural language format.
+\end{tabular}
+\end{flushleft}
+
+%\setlength{\parskip}{1.2mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%% Main body %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%1%%%%%%%%%%%%%%%%%%%%
+\chapter{บทนำ}
+
+%%%%%%%%%%%%%%%%%%%%1.1%%%%%%%%%%%%%%%%%%%%
+\section{ที่มาและความสำคัญ}
+\setlength{\parindent}{1cm}
+ประเทศไทยเป็นประเทศที่มีแหล่งท่องเที่ยวที่สวยงามและหลากหลายทางวัฒนธรรม ซึ่งอุตสาหกรรมท่องเที่ยวในประเทศไทยนั้นจัดเป็นแหล่งรายได้หลักแก่ประเทศมาอย่างยาวนาน และก่อให้เกิดประโยชน์ในด้านต่าง ๆ อย่างมากมาย สามารถสร้างอาชีพและรายได้รวมถึงการพัฒนาบุคลากรและสถานที่ท่องเที่ยวต่าง ๆ ซึ่งจะมีความสำคัญมากขึ้นในอนาคต แต่เนื่องจากในช่วงวิกฤติโควิด-19 ที่ผ่านมาการท่องเที่ยวในไทยซบเซาและเข้าขั้นวิกฤติ ผู้ประกอบการต่างปิดตัวลงเนื่องจากขาดรายได้และลูกค้า ทำให้การท่องเที่ยวในไทยนั้นถูกปิดตัวลงชั่วขณะ
+
+ต่อมาหลังจากที่ผ่านพ้นวิกฤติโควิด-19 มา การท่องเที่ยวในไทยเริ่มกลับมาคึกครื้นและมีชีวิตชีวาอีกครั้ง แต่ต้องใช้เวลาเพื่อที่จะฟื้นตัวขึ้นเนื่องจากในช่วงโควิด-19 นั้นสร้างผลกระทบเป็นระยะเวลาถึง 2 ปี ทำให้เกิดผลกระทบค่อนข้างกว้างและเกิดความเสียหายอย่างหนัก โดยปัจจุบันมีผู้คนหันกลับมาท่องเที่ยวมากขึ้นแต่ยังขาดข้อมูลรายละเอียดหรือคำแนะนำต่าง ๆ จึงก่อให้เกิดปัญหาที่ตามมาหลายอย่าง เช่นความล่าช้าในการท่องเที่ยว ความไม่พร้อมในการเที่ยว สถานที่ท่องเที่ยวที่ไม่น่าสนใจ เป็นต้น
+
+ดังนั้นทางคณะผู้จัดทำตระหนักเห็นถึงปัญหาในด้านการท่องเที่ยวในประเทศไทยจึงได้มีความสนใจในการพัฒนาเว็บแอปพลิเคชันที่ใช้ Artificial Intelligence (AI) ผ่านทาง Chatbot เพื่อส่งเสริมการท่องเที่ยวในประเทศไทยให้กลับมาเฟื่องฟูและมีชีวิตชีวาอีกครั้ง โดย เว็บแอปพลิเคชัน นั้นจะช่วยให้นักท่องเที่ยวชาวไทยที่มีความต้องการที่จะท่องเที่ยวแต่ขาดประสบการณ์หรือมีประสบการณ์ไม่เพียงพอ ได้เข้าถึงสถานที่ท่องเที่ยวไทยได้ง่ายมากยิ่งขึ้น ช่วยให้แหล่งท่องเที่ยวในประเทศไทยมีการเติบโตมากยิ่งขึ้น และส่งผลให้ผู้ประกอบการในพื้นที่นั้นสามารถเพิ่มรายได้และมีลูกค้าเข้าถึงมากยิ่งขึ้น ซึ่งเว็บแอปพลิเคชันนี้ทำขึ้นให้นักท่องเที่ยวได้รับข้อมูลหรือคำแนะนำที่ตรงใจ สามารถวางแผนการท่องเที่ยวเข้าถึงสถานที่ท่องเที่ยวที่ตรงตามความต้องการ และช่วยให้การเดินทางท่องเที่ยวนี้เต็มไปด้วยประสบการณ์ ทั้งความสุขและความท้าทาย
+
+%%%%%%%%%%%%%%%%%%%%1.2%%%%%%%%%%%%%%%%%%%%
+\section{ประเภทของโครงงาน}
+คือผลิตภัณฑ์ทางการค้าที่มีศักยภาพ โดยจะเป็นเว็บแอปพลิเคชันสำหรับการแนะนำสถานที่ท่องเที่ยวให้ผู้ที่ต้องการจะท่องเที่ยวผ่านทาง AI Chatbot ที่อยู่ภายในเว็บแอปพลิเคชัน เพื่อลดระยะเวลาในการหาข้อมูลที่มีอยู่อย่างมากมายและทำให้ผู้ใช้งานสะดวกสบายสำหรับการที่จะเริ่มต้นท่องเที่ยว
+
+%%%%%%%%%%%%%%%%%%%%1.3%%%%%%%%%%%%%%%%%%%%
+\section{วิธีการที่นำเสนอ}
+\subsection{วิธีการที่นำเสนอ}
+\begin{enumerate}
+\item  หาชุดข้อมูลเพื่อนำมาใช้ในการเทรนโมเดล (Data preprocessing) โดยนำมาจาก \href{https://thailandtourismdirectory.go.th/} {https://thailandtourismdirectory.go.th/} คือเว็บไซต์อย่างเป็นทางการของกระทรวงการท่องเที่ยวและกีฬาของประเทศไทย โดยเราจะทำ Web Scraping และนำมาทำ Data Cleaning เพื่อข้อมูลที่มีคุณภาพในการเทรนโมเดล
+\item  สร้าง AI Chatbot ที่สามารถตอบคำถามผู้ใช้งานได้อย่างถูกต้องและแม่นยำผ่านการเทรนและปรับปรุงโมเดลด้วยชุดข้อมูลที่มีคุณภาพโดยใช้ OpenAI API ในการสร้าง AI Chatbot แต่ละส่วน โดยคำตอบของ AI Chatbot จะให้รายละเอียดเกี่ยวกับสถานที่ท่องเที่ยวอย่างเช่น ที่ตั้ง ประวัติ ลักษณะสถานที่ เวลาทำการ และกิจกรรมในสถานที่นั้น เป็นต้น
+\item  สร้างเว็บแอปพลิเคชันไว้รองรับ AI Chatbot และให้ผู้ใช้สามารถใช้งานผ่านทางเว็บแอปพลิเคชัน โดยในเว็บแอปพลิเคชันจะ Interact กับคำตอบของ AI Chatbot ได้ เช่น สามารถให้เชื่อมต่อข้อมูลเพิ่มเติมของสถานที่นั้น แสดงรูปภาพของสถานที่นั้น เป็นต้น
+\item  สร้างฐานข้อมูลเชื่อมกับเว็บแอปพลิเคชันและ AI Chatbot สำหรับเก็บชุดข้อมูลผู้ใช้งาน
+\end{enumerate} \newpage
+
+\subsection{จุดประสงค์ของโครงงาน}
+\begin{enumerate}
+\item  เพื่ออำนวยความสะดวกให้แก่ผู้ที่ต้องการเดินทางท่องเที่ยวแต่ไม่มีประสบการณ์หรือความรู้เกี่ยวกับสถานที่ท่องเที่ยว
+\item  เพื่อช่วยให้ง่ายต่อการหาข้อมูลเกี่ยวกับสถานที่ท่องเที่ยวสำหรับผู้ที่ต้องการจะเดินทางท่องเที่ยวโดยคำนึงถึงข้อจำกัดต่าง ๆ ทั้งเวลาและงบประมาณ
+\item  เพื่อศึกษาเกี่ยวกับโมเดลที่ใช้งานและการสร้าง Generative AI
+\end{enumerate}
+
+\subsection{ขอบเขตของโครงงาน}
+\begin{enumerate}
+\item  พัฒนาเว็บแอปพลิเคชัน เพื่อส่งเสริมการท่องเที่ยวในประเทศไทยโดยใช้ Generative AI ในการให้ข้อมูลรายละเอียดหรือคำแนะนำสำหรับสถานที่ท่องเที่ยวตามความต้องการของผู้ใช้งาน
+\item  AI Chatbot สามารถตอบคำถามให้ข้อมูลกับผู้ใช้งานเพื่อวางแผนการท่องเที่ยวสำหรับกรณีมีเงื่อนไขที่จำกัดอย่างเช่นเรื่องงบประมาณ เวลาและจำนวนคน
+\item  AI Chatbot สามารถลิสต์สถานที่ท่องเที่ยวในจังหวัดที่เลือกว่าในจังหวัดนั้นมีสถานที่ท่องเที่ยวใดบ้าง พร้อมรายละเอียดตามความต้องการของผู้ใช้งาน เช่น ที่ตั้ง ประวัติ ลักษณะสถานที่ เวลาทำการ และกิจกรรมในสถานที่นั้น เป็นต้น
+\item  ชุดข้อมูลที่ใช้จะเริ่มจากภายในภูมิภาคใดภูมิภาคนึงในประเทศไทย ซึ่งต้องมีสถานที่ท่องเที่ยวที่ได้รับความนิยมและมีความหลากหลายด้านประเภทของสถานที่ท่องเที่ยว
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%1.4%%%%%%%%%%%%%%%%%%%%
+\section{เนื้อหาทางวิศวกรรมที่เป็นต้นฉบับ}
+\begin{enumerate}
+\setlength{\parindent}{1cm}
+\item  AI Chatbot
+
+พัฒนาโมเดลสำหรับการทำ AI Chatbot ที่สามารถตอบคำถามตามความต้องการของผู้ใช้งานได้อย่างถูกต้องและแม่นยำผ่านการเทรนและปรับจูนโมเดลด้วยชุดข้อมูลที่มีคุณภาพโดยใช้ OpenAI API ในการทำเป็น Based Model โดยตรง โดยต้องใช้ความรู้ Natural Language Processing (NLP) และ Large Language Model (LLM)
+\item  Web Application
+
+พัฒนาเว็บแอปพลิเคชันที่สามารถใช้แนะนำสถานที่ท่องเที่ยวและคอยตอบคำถามของผู้ใช้งานที่เข้ามาใช้ AI Chatbot โดยใช้ความรู้เกี่ยวกับ Front-end และ Back-end ในการพัฒนาส่วนของหน้าบ้านและหลังบ้าน พร้อมหา Framework ที่เหมาะสมสำหรับการใช้กับ AI Chatbot รวมทั้งการใช้ API เพื่อเชื่อมต่อ OpenAI หรือแอปพลิเคชันอื่นที่เกี่ยวข้อง
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%1.5%%%%%%%%%%%%%%%%%%%%
+\section{การแยกย่อยงาน และร่างแผนการดำเนินงาน}
+\begin{enumerate}
+\item ศึกษากำหนดหัวข้อโครงงาน \\
+1.1.	ศึกษาค้นคว้าปัญหาที่เกี่ยวข้อง \\
+1.2.	ปรึกษาอาจารย์เพื่อหาวิธีแก้ไขและรูปแบบของโครงงาน \\
+1.3.	กำหนดขอบเขตของโครงงาน
+\item จัดทำข้อเสนอหัวข้อโครงงาน (Project Idea)
+\item รวบรวมข้อมูลที่เกี่ยวข้องกับโครงงาน
+\item จัดทำข้อเสนอโครงงาน (Project Proposal) \\
+4.1.	จัดทำและแก้ไขข้อเสนอโครงงาน \\
+4.2.	นำเสนอข้อเสนอโครงงาน
+\item ศึกษาซอฟท์แวร์และเทคโนโลยีในการทำโครงงาน \\
+5.1.	ศึกษาโมเดลและอัลกอริทึมที่เกี่ยวข้อง \\
+5.2.	ศึกษาการทำเว็บแอปพลิเคชัน \\
+5.3.	ศึกษาภาษาที่ใช้ในการทำโปรแกรม
+\item ค้นหาและรวบรวมแหล่งข้อมูล \\
+6.1.	เก็บข้อมูลที่จะนำมาทำเป็นชุดข้อมูล
+\item วิเคราะห์และออกแบบเว็บแอปพลิเคชัน \\
+7.1.	การออกแบบระบบและฐานข้อมูล \\
+7.2.	การออกแบบ Diagram \\
+7.3.	ศึกษา User Experience เพื่อนำมาออกแบบ User Interface \\
+7.4.	การออกแบบ User Interface ให้เหมาะสมและใช้งานง่ายต่อผู้ใช้งาน
+\item จัดทำรายงานประจำภาคการศึกษาที่ 1
+\item พัฒนาโมเดลในรูปแบบต่าง ๆ \\
+9.1.	เทรนและปรับจูนโมเดล รวมถึงการใช้ OpenAI API
+\item ทดสอบและปรับปรุงโมเดล \\
+10.1.	ปรับปรุงโมเดลให้มีประสิทธิภาพและแม่นยำมากยิ่งขึ้น
+\item พัฒนาเว็บแอปพลิเคชัน \\
+11.1.	พัฒนา Backend ให้สามารถนำ AI Chatbot เข้าไปใช้งานในตัวเว็บได้ \\
+11.2.	พัฒนา Frontend ให้แสดงผลลัพธ์ได้อย่างเหมาะสมและใช้งานง่ายต่อผู้ใช้งาน
+\item ทดสอบและปรับปรุงระบบโดยรวมทั้งหมด \\
+12.1.	ทดสอบระบบโดยรวมเพื่อหาข้อผิดพลาด \\
+12.2.	แก้ไขและปรับปรุงข้อผิดพลาด
+\item จัดทำรายงานประจำภาคการศึกษาที่ 2
+\item นำเสนอโครงงาน
+\end{enumerate} \newpage
+
+%%%%%%%%%%%%%%%%%%%%1.6%%%%%%%%%%%%%%%%%%%%
+\section{ตารางการดําเนินงาน}
+\begin{table}[!h]
+\caption{ตารางแสดงการดําเนินงานในภาคการศึกษาที่ 1}\label{tbl:table1.1}
+\begin{tabular}{llllllllllllllllllll}
+\cline{1-19}
+\multicolumn{1}{|c|}{}                                                                                       & \multicolumn{4}{c|}{สิงหาคม}                                                                                                                                                                  & \multicolumn{4}{c|}{กันยายน}                                                                                                                                                                  & \multicolumn{4}{c|}{ตุลาคม}                                                                                                                                                                   & \multicolumn{4}{c|}{พฤศจิกายน}                                                                                                                                                                & \multicolumn{2}{c|}{ธันวาคม}                                                                  &  \\ \cline{2-19}
+\multicolumn{1}{|c|}{\multirow{-2}{*}{หัวข้อ/ สัปดาห์}}                                                      & \multicolumn{1}{c|}{1}                        & \multicolumn{1}{c|}{2}                        & \multicolumn{1}{c|}{3}                        & \multicolumn{1}{c|}{4}                        & \multicolumn{1}{c|}{1}                        & \multicolumn{1}{c|}{2}                        & \multicolumn{1}{c|}{3}                        & \multicolumn{1}{c|}{4}                        & \multicolumn{1}{c|}{1}                        & \multicolumn{1}{c|}{2}                        & \multicolumn{1}{c|}{3}                        & \multicolumn{1}{c|}{4}                        & \multicolumn{1}{c|}{1}                        & \multicolumn{1}{c|}{2}                        & \multicolumn{1}{c|}{3}                        & \multicolumn{1}{c|}{4}                        & \multicolumn{1}{c|}{1}                        & \multicolumn{1}{c|}{2}                        &  \\ \cline{1-19}
+\multicolumn{1}{|l|}{1. ศึกษากำหนดหัวข้อโครงงาน}                                                             & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFC9E}} & \multicolumn{1}{c|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         &  \\ \cline{1-19}
+\multicolumn{1}{|l|}{2. จัดทำ IDEA Document}                                                                 & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFC9E}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFC9E}} & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         &  \\ \cline{1-19}
+\multicolumn{1}{|l|}{3. ส่ง IDEA Document}                                                                   & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFC9E}} & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         &  \\ \cline{1-19}
+\multicolumn{1}{|l|}{4. จัดทำ Detailed Proposal Draft}                                                       & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         &  \\ \cline{1-19}
+\multicolumn{1}{|l|}{5. ส่ง Detailed Proposal Draft}                                                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         &  \\ \cline{1-19}
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}6. ศึกษาซอฟท์แวร์และ\\ เทคโนโลยีในการทำโครงงาน\end{tabular}} & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} &  \\ \cline{1-19}
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}7. เก็บข้อมูลที่จะนำมาทำเป็น\\ ชุดข้อมูล\end{tabular}}       & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} & \multicolumn{1}{l|}{\cellcolor[HTML]{B9F1B8}} &  \\ \cline{1-19}
+\multicolumn{1}{|l|}{8. จัดทำ Final Proposal}                                                                & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{\cellcolor[HTML]{A6D1D3}} & \multicolumn{1}{l|}{\cellcolor[HTML]{A6D1D3}} & \multicolumn{1}{l|}{\cellcolor[HTML]{A6D1D3}} & \multicolumn{1}{l|}{\cellcolor[HTML]{A6D1D3}} & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         &  \\ \cline{1-19}
+\multicolumn{1}{|l|}{9. ส่ง Final Proposal}                                                                  & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{\cellcolor[HTML]{A6D1D3}} & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         &  \\ \cline{1-19}
+\multicolumn{1}{|l|}{10. เตรียมตัวการนำเสนอ}                                                                 & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{\cellcolor[HTML]{A6D1D3}} & \multicolumn{1}{l|}{\cellcolor[HTML]{A6D1D3}} & \multicolumn{1}{l|}{\cellcolor[HTML]{A6D1D3}} & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         &  \\ \cline{1-19}
+\multicolumn{1}{|l|}{11. นำเสนอ Proposal}                                                                    & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{\cellcolor[HTML]{A6D1D3}} & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         &  \\ \cline{1-19}
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}12. จัดทำรายงานประจำภาค\\ การศึกษาที่ 1\end{tabular}}        & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{\cellcolor[HTML]{BABCF9}} & \multicolumn{1}{l|}{\cellcolor[HTML]{BABCF9}} & \multicolumn{1}{l|}{\cellcolor[HTML]{BABCF9}} & \multicolumn{1}{l|}{\cellcolor[HTML]{BABCF9}} & \multicolumn{1}{l|}{\cellcolor[HTML]{BABCF9}} & \multicolumn{1}{l|}{\cellcolor[HTML]{BABCF9}} & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         &  \\ \cline{1-19}
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}13. วิเคราะห์และออกแบบ \\ เว็บแอปพลิเคชัน\end{tabular}}      & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{\cellcolor[HTML]{BABCF9}} & \multicolumn{1}{l|}{\cellcolor[HTML]{BABCF9}} & \multicolumn{1}{l|}{\cellcolor[HTML]{BABCF9}} & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         &  \\ \cline{1-19}
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}14. ส่งรายงานประจำภาค\\ การศึกษาที่ 1\end{tabular}}          & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{\cellcolor[HTML]{BABCF9}} & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         &  \\ \cline{1-19}
+\multicolumn{1}{|l|}{15. เตรียมตัวการนำเสนอ}                                                                 & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{\cellcolor[HTML]{BABCF9}} & \multicolumn{1}{l|}{\cellcolor[HTML]{BABCF9}} & \multicolumn{1}{l|}{\cellcolor[HTML]{BABCF9}} &  \\ \cline{1-19}
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}16. นำเสนอรายงานประจำภาค\\ การศึกษาที่ 1\end{tabular}}       & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{\cellcolor[HTML]{BABCF9}} & \multicolumn{1}{l|}{\cellcolor[HTML]{BABCF9}} &  \\ \cline{1-19}
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\caption{ตารางแสดงการดําเนินงานในภาคการศึกษาที่ 2}\label{tbl:table1.2}
+\begin{tabular}{|l|cccc|cccc|cccc|cccc|cc|}
+\hline
+\multicolumn{1}{|c|}{}                                                          & \multicolumn{4}{c|}{มกราคม}                                                                                                                                              & \multicolumn{4}{c|}{กุมภาพันธ์}                                                                                                                                                                 & \multicolumn{4}{c|}{มีนาคม}                                                                                                                                                                                                                                          & \multicolumn{4}{c|}{เมษายน}                                                                                                                                                                                                                                          & \multicolumn{2}{c|}{พฤษภาคม}                                                                                           \\ \cline{2-19} 
+\multicolumn{1}{|c|}{\multirow{-2}{*}{หัวข้อ/ สัปดาห์}}                         & \multicolumn{1}{c|}{1}                        & \multicolumn{1}{c|}{2}                        & \multicolumn{1}{c|}{3}                        & 4                        & \multicolumn{1}{c|}{1}                        & \multicolumn{1}{c|}{2}                        & \multicolumn{1}{c|}{3}                        & 4                                               & \multicolumn{1}{c|}{1}                                               & \multicolumn{1}{c|}{2}                                               & \multicolumn{1}{c|}{3}                                               & 4                                               & \multicolumn{1}{c|}{1}                                               & \multicolumn{1}{c|}{2}                                               & \multicolumn{1}{c|}{3}                                               & 4                                               & \multicolumn{1}{c|}{1}                                               & 2                                               \\ \hline
+\begin{tabular}[c]{@{}l@{}}1. ตรวจสอบและจัดการกับ\\ ชุดข้อมูล\end{tabular}      & \multicolumn{1}{c|}{\cellcolor[HTML]{F89E9E}} & \multicolumn{1}{c|}{\cellcolor[HTML]{F89E9E}} & \multicolumn{1}{c|}{\cellcolor[HTML]{F89E9E}} & \cellcolor[HTML]{F89E9E} & \multicolumn{1}{c|}{\cellcolor[HTML]{F89E9E}} & \multicolumn{1}{c|}{\cellcolor[HTML]{F89E9E}} & \multicolumn{1}{c|}{}                         &                                                 & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{}                                                &                                                 & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{}                                                &                                                 & \multicolumn{1}{c|}{}                                                &                                                 \\ \hline
+2. พัฒนาโมเดลในรูปแบบต่างๆ                                                      & \multicolumn{1}{c|}{\cellcolor[HTML]{F89E9E}} & \multicolumn{1}{c|}{\cellcolor[HTML]{F89E9E}} & \multicolumn{1}{c|}{\cellcolor[HTML]{F89E9E}} & \cellcolor[HTML]{F89E9E} & \multicolumn{1}{c|}{\cellcolor[HTML]{F89E9E}} & \multicolumn{1}{c|}{\cellcolor[HTML]{F89E9E}} & \multicolumn{1}{c|}{}                         &                                                 & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{l|}{}                                                & \multicolumn{1}{l|}{}                           & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{}                                                &                                                 & \multicolumn{1}{c|}{}                                                &                                                 \\ \hline
+3. ทดสอบและปรับปรุงโมเดล                                                        & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         &                          & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{\cellcolor[HTML]{F89E9E}} & \multicolumn{1}{c|}{\cellcolor[HTML]{F89E9E}} & \cellcolor[HTML]{F89E9E}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{F89E9E}}                        & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{}                                                &                                                 & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{}                                                &                                                 & \multicolumn{1}{c|}{}                                                &                                                 \\ \hline
+4. พัฒนาเว็บแอปพลิเคชัน                                                         & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         &                          & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{{\color[HTML]{F1B97B} }}  & \cellcolor[HTML]{FFCC99}{\color[HTML]{F1B97B} } & \multicolumn{1}{c|}{\cellcolor[HTML]{FFCC99}{\color[HTML]{F1B97B} }} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFCC99}{\color[HTML]{F1B97B} }} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFCC99}{\color[HTML]{F1B97B} }} & {\color[HTML]{F1B97B} }                         & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{}                                                &                                                 & \multicolumn{1}{c|}{}                                                &                                                 \\ \hline
+\begin{tabular}[c]{@{}l@{}}5. ทดสอบและปรับปรุงระบบ\\ โดยรวมทั้งหมด\end{tabular} & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         &                          & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         &                                                 & \multicolumn{1}{c|}{{\color[HTML]{F1B97B} }}                         & \multicolumn{1}{c|}{{\color[HTML]{F1B97B} }}                         & \multicolumn{1}{c|}{\cellcolor[HTML]{FFCC99}{\color[HTML]{F1B97B} }} & \cellcolor[HTML]{FFCC99}{\color[HTML]{F1B97B} } & \multicolumn{1}{c|}{\cellcolor[HTML]{FFCC99}{\color[HTML]{F1B97B} }} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFCC99}{\color[HTML]{F1B97B} }} & \multicolumn{1}{c|}{{\color[HTML]{F1B97B} }}                         &                                                 & \multicolumn{1}{c|}{}                                                &                                                 \\ \hline
+\begin{tabular}[c]{@{}l@{}}6. จัดทำรายงานประจำภาค\\ การศึกษาที่ 2\end{tabular}  & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         &                          & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         &                                                 & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{}                                                &                                                 & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{\cellcolor[HTML]{BD9675}{\color[HTML]{CCCCFF} }} & \multicolumn{1}{c|}{\cellcolor[HTML]{BD9675}{\color[HTML]{CCCCFF} }} & \cellcolor[HTML]{BD9675}{\color[HTML]{CCCCFF} } & \multicolumn{1}{c|}{}                                                &                                                 \\ \hline
+7. เตรียมตัวการนำเสนอ                                                           & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         &                          & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         &                                                 & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{}                                                &                                                 & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{}                                                & \cellcolor[HTML]{BD9675}{\color[HTML]{CCCCFF} } & \multicolumn{1}{c|}{\cellcolor[HTML]{BD9675}{\color[HTML]{CCCCFF} }} &                                                 \\ \hline
+\begin{tabular}[c]{@{}l@{}}8. นำเสนอรายงานประจำภาค\\ การศึกษาที่ 2\end{tabular} & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         &                          & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         &                                                 & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{}                                                &                                                 & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{}                                                & \multicolumn{1}{c|}{}                                                &                                                 & \multicolumn{1}{c|}{\cellcolor[HTML]{BD9675}{\color[HTML]{CCCCFF} }} & \cellcolor[HTML]{BD9675}{\color[HTML]{CCCCFF} } \\ \hline
+\end{tabular}
+\end{table} \newpage
+
+%%%%%%%%%%%%%%%%%%%%1.7%%%%%%%%%%%%%%%%%%%%
+\section{ผลการดำเนินงาน}
+\subsection{ผลการดำเนินงานในภาคการศึกษาที่ 1}
+\begin{enumerate}
+\item ศึกษาองค์ความรู้ทั้งหมดที่จำเป็นต่อการทำโครงงาน
+\item ศึกษาค้นคว้าและรวบรวมแหล่งชุดข้อมูล
+\item การออกแบบเว็บแอปพลิเคชัน
+	\begin{itemize}
+	\item การออกแบบระบบและฐานข้อมูล
+	\item การออกแบบ Diagram
+	\item การออกแบบ User Experience/ User Interface
+	\end{itemize}
+\item รายงานประจำภาคการศึกษาที่ 1
+\end{enumerate}
+
+\subsection{ผลการดำเนินงานในภาคการศึกษาที่ 2}
+\begin{enumerate}
+\item พัฒนาโมเดลเพื่อใช้ในการเทรนและสร้าง AI Chatbot
+\item ทดสอบและปรับปรุง AI Chatbot ให้มีประสิทธิภาพ
+\item สร้างเว็บแอปพลิเคชัน เพื่อรองรับ AI Chatbot
+\item รายงานประจำภาคการศึกษาที่ 2
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%2%%%%%%%%%%%%%%%%%%%%
+\chapter{ทฤษฎีและงานวิจัยที่เกี่ยวข้อง}
+ในการดำเนินโครงงานเรื่อง AI-Web Application for Travel Place Recommendations คณะผู้จัดทำได้ศึกษาแนวคิดที่เกี่ยวกับทฤษฎีที่เกี่ยวข้องที่ใช้ในการทำงาน มีการอธิบายภาษาทางคอมพิวเตอร์และเทคโนโลยีที่ใช้งานในการแก้ไขปัญหา และงานวิจัยที่ได้ใช้อ้างอิงในการทำงาน ซึ่งทั้งนี้เพื่อนำมาใช้ในการดำเนินโครงงานให้เป็นไปตามวัตถุประสงค์และเป้าหมายที่ตั้งไว้ในบทที่ 1 และนําไปใช้ในการออกแบบดังที่กล่าวไว้ในบทที่ 3 ต่อไป
+
+%%%%%%%%%%%%%%%%%%%%2.1%%%%%%%%%%%%%%%%%%%%
+\section{ทฤษฎีที่เกี่ยวข้อง}
+
+%%%%%%%%%%%%%%%%%%%%2.1.1
+\subsection{Natural Language Processing (NLP)}
+การประมวลผลภาษาธรรมชาติ (Natural Language Processing, NLP) \cite{nlp} เป็นสาขาหนึ่งของเทคโนโลยีปัญญาประดิษฐ์ที่ทำให้คอมพิวเตอร์เข้าใจภาษามนุษย์เพื่อวัตถุประสงค์ด้านการสื่อสารและวิเคราะห์ข้อมูลที่เป็นภาษาเนื่องมาจากคอมพิวเตอร์ถูกออกแบบมาให้เหมาะกับการเข้าใจข้อมูลตัวเลขหรือรหัสที่มีความหมายนัยหนึ่งชัดเจนซึ่งไม่ตรงกับวิธีการสื่อสารของมนุษย์ซึ่งอาศัยภาษาเป็นหลักและภาษามีความซับซ้อนกว่ารหัสที่ใช้กับคอมพิวเตอร์อย่างมาก Natural Language Processing (NLP) จึงเกิดขึ้นเพื่อลดช่องว่างในการสื่อสารระหว่างมนุษย์กับคอมพิวเตอร์
+%%%%%%%%%%%%%%%%%%%%2.1.2
+\subsection{Large Language Models (LLM)}
+โมเดลภาษาขนาดใหญ่ (Large Language Model, LLM) \cite{llm} เป็นรูปแบบของปัญญาประดิษฐ์ชนิดหนึ่งที่โมเดลถูกเทรนด้วยข้อมูลข้อความมากมายมหาศาลจากอินเตอร์เน็ต สร้างเป็นโมเดลภาษา Language Model ให้สามารถมีความเข้าใจความหมายข้อความตามบริบท (Context) และสร้างข้อความที่สอดคล้องออกมาได้ LLM แบ่งได้เป็น 2 ประเภท คือ 1.Base LLM: โมเดลภาษาขนาดใหญ่ ที่ถูกเทรนให้ทำนายคำถัดไปที่จะเกิดขึ้น 2.Instruction Tuned LLM: โมเดลภาษาขนาดใหญ่ที่นำ Base LLM มา Fine-Tuned ให้ทำงานตามคำสั่ง เพื่อตอบคำถาม รวมถึงใช้เทคนิคการให้คะแนน feedback คำตอบจากมนุษย์หรือ Reinforcement Learning with Human Feedback (RLHF) เพื่อป้องการเนื้อหาที่ไม่เหมาะสม
+
+เนื่องจาก Instruction Tuned LLM สามารถรับคำสั่งจากผู้ใช้ผ่านข้อความภาษาธรรมชาติเหมือนการพูดคุยปกติ ทำให้คุณภาพของผลลัพธ์หรือคำตอบที่ได้นั้น ขึ้นกับคำถามหรือ Prompt ค่อนข้างมาก
+%%%%%%%%%%%%%%%%%%%%2.1.3
+\subsection{Reinforcement Learning from Human Feedback (RLHF)}
+Reinforcement Learning from Human Feedback (RLHF) \cite{rlhf} เป็นเทคนิคหนึ่งในการฝึกฝนโมเดล โดยมีการใส่ความคิดเห็นของมนุษย์เข้าไปเป็นส่วนหนึ่งในการฝึกฝนผ่านกระบวนการเรียนรู้แบบ Reinforcement Learning ซึ่งการฝึกฝนโมเดลรูปแบบนี้ค่อนข้างมีความซับซ้อน เนื่องจากเทคนิคนี้จะประกอบไปด้วยการฝึกฝนโมเดลย่อยหลายส่วนโดยอาจแบ่งกระบวนการฝึกฝนเป็น 3 ส่วนหลัก ดังต่อไปนี้
+1.การฝึกฝน Pretrained Language Models (LM) เพื่อใช้เป็นโมเดลตั้งต้นที่มีความเข้าใจโครงสร้างภาษาสำหรับสร้างชุดข้อมูลสำหรับฝึกฝน Reward Model
+2.การฝึกฝน Reward Model เพื่อใช้เป็นโมเดลสำหรับการให้คะแนนผลลัพธ์ที่ได้จาก Language Model
+3.การ Fine-tune Language Model เพื่อให้ได้โมเดลที่เข้าใจบริบทของเนื้อหาในโดเมนที่สนใจด้วย Reinforcement Learning
+
+ซึ่งจากกระบวนการ Reinforcement Learning from Human Feedback (RLHF) ทั้งหมดจะเห็นว่ามีส่วนที่รวมความคิดเห็นหรือการประเมินผลโดยมนุษย์เข้ามาอยู่ในขั้นตอนการฝึกฝน Reward Model เพื่อเป็นส่วนหนึ่งในการทำให้ผลลัพธ์ของโมเดลมีความสมเหตุสมผล ดูเป็นธรรมชาติ และไม่มีความแปลกจนเกินไป \newpage
+%%%%%%%%%%%%%%%%%%%%2.1.4
+\subsection{Generative Pre-trained Transformers (GPT)}
+Generative Pre-trained Transformers (GPT) \cite{gpt} เป็นแบบจำลองการทำนายภาษาที่ใช้เครือข่ายประสาทที่สร้างบนสถาปัตยกรรม Transformer โดยใช้กลไกการใส่ใจตนเอง (self-attention) เพื่อเน้นส่วนต่าง ๆ ของข้อความที่ป้อนเข้าในระหว่างขั้นตอนการประมวลผลแต่ละขั้นตอน รูปแบบ Transformer จะจับบริบทได้มากขึ้นและปรับปรุงประสิทธิภาพในการทำงานในการประมวลผล Natural Language Processing (NLP) ซึ่งเป็นความก้าวหน้าที่สำคัญในปัญญาประดิษฐ์ (Artificial Intelligence, AI) ที่เป็นพลังให้แก่การใช้งาน Generative AI เช่น ChatGPT โมเดล GPT ให้แอปพลิเคชันสามารถสร้างข้อความและเนื้อหาที่เหมือนมนุษย์ (ภาพ เพลง และ
+อื่น ๆ) และตอบคำถามในลักษณะการสนทนา ในองค์กรหลากหลายอุตสาหกรรมกำลังใช้โมเดล GPT และ Generative AI สำหรับการใช้งาน Q\&A bots, สรุปข้อความ, การสร้างเนื้อหา และการค้นหา โดยจะวิเคราะห์คำสั่งภาษาธรรมชาติที่รู้จักกันเป็นพรอมท์ และคาดการณ์การตอบสนองที่ดีที่สุดขึ้นอยู่กับความเข้าใจของภาษา
+
+GPT สามารถพึ่งพาความรู้ที่ได้รับหลังจากที่ได้รับการฝึกอบรมกับพารามิเตอร์ที่มีจำนวนมากระดับพันล้านในชุดข้อมูลภาษาขนาดใหญ่ ซึ่งสามารถใช้บริบทการป้อนข้อมูลเข้าบัญชีและเข้าร่วมแบบ Dynamic ไปยังส่วน
+ต่าง ๆ ของการป้อนข้อมูล ทำให้มีความสามารถในการสร้างการตอบสนองที่ยาวนานไม่เพียงแต่คำถัดไปในลำดับ
+%%%%%%%%%%%%%%%%%%%%2.1.5
+\subsection{Chatbot}
+Chatbot \cite{chatbot, aibased} เป็นโปรแกรมประยุกต์ (Software Application) ที่สามารถทำงานได้อย่างอัตโนมัติ Chatbot เป็นคำที่ถูกเรียกในอุตสาหกรรมเทคโนโลยีเป็นบริการที่ทำงานโดยถูกตั้งเงื่อนไขในการทำงานเอาไว้ล่วงหน้าและในบางกรณีได้ถูกพัฒนาด้วยเทคโนโลยีปัญญาประดิษฐ์ ที่ผู้ใช้งานมีปฏิสัมพันธ์ผ่านการสนทนา โดยระบบโต้ตอบการสนทนาอัตโนมัติ เป็นระบบที่ถูกออกแบบให้สามารถเริ่มทำงานได้ด้วยตัวเอง โดยจะทำงานตามโปรแกรมที่ผู้พัฒนาออกแบบไว้ ซึ่งมักถูกออกแบบให้ตอบคำถามและสืบค้นข้อมูลเฉพาะเรื่องตามแบบที่เจ้าของระบบต้องการ ผู้ใช้งานสามารถโต้ตอบกับระบบสนทนาอัตโนมัติได้โดยใช้ภาษาธรรมชาติ และถูกออกแบบให้ระบบมีการเรียนรู้และลอกเลียนพฤติกรรมมนุษย์ เพื่อให้มีความคล้ายคลึงกับมนุษย์มากที่สุด
+\subsubsection{หลักการทำงานของ Chatbot}
+\begin{enumerate}
+\item วิเคราะห์คำถามของผู้ใช้งาน โดยการค้นหาข้อความที่ใกล้เคียงหรือเหมือนกับคำที่ต้องการค้นหา
+\item ตอบกลับผู้ใช้งาน เมื่อหาข้อความที่ใกล้เคียงกับคำที่ต้องการค้นหาพบแล้วจะดำเนินการตอบกลับผู้ใช้งานด้วยคำตอบที่เหมาะสมและรวดเร็ว
+\end{enumerate}
+\subsubsection{ประเภทของการพัฒนา Chatbot}
+\begin{enumerate}
+\item Rule-Based Chatbot หรือ Script Bot เป็น Chatbot ที่ทำงานและให้ผลลัพธ์ตามกฎหรือคีย์เวิร์ดที่ได้กำหนดไว้ในระบบ หากคําถามที่ผู้ใช้งานถามตรงกับคีย์เวิร์ดตัวไหน Chatbot จะตอบคําถามตามที่ได้ถูกกำหนดไว้ ถ้าผู้ใช้งานพิมพ์ผิดแม้แต่ตัวอักษรเดียว หรือถามไม่ตรงกับคีย์เวิร์ดที่กำหนด Chatbot จะไม่สามารถตอบคําถามได้ถูกต้อง จึงจำเป็นต้องกำหนดคำสั่งไว้หลายรูปแบบเพื่อให้ครอบคลุมทุกคําถามที่เป็นไปได้ ซึ่งอาจจะไม่เหมาะนักเพราะการพัฒนา Chatbot แนวนี้จำเป็นต้องกำหนดเงื่อนไข ที่ชัดเจน และครอบคลุมเอาไว้ 
+\item Conversational AI Chatbot เป็น Chatbot ที่รวมเทคโนโลยี Machine learning (ML) และ Natural Language Processing (NLP) เข้าด้วยกัน มีความยากในการสร้างมากกว่าแบบ Rule-Based สามารถโต้ตอบกับคู่สนทนาได้อย่างเป็นธรรมชาติมากขึ้น โดยข้อความก็จะมีลักษณะคล้ายคลึงกับการสนทนากับมนุษย์จริง ๆ และตรงกับความต้องการของผู้ใช้
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%2.2%%%%%%%%%%%%%%%%%%%%
+\section{ทฤษฎีที่เกี่ยวข้อง}
+\subsection{Python}
+ภาษา Python \cite{python} เป็นภาษาการเขียนโปรแกรมที่ใช้อย่างแพร่หลายในเว็บแอปพลิเคชันการพัฒนาซอฟต์แวร์ วิทยาศาสตร์ข้อมูล และ Machine Learning (ML) ซึ่งนักพัฒนาใช้ภาษา Python เนื่องจากมีประสิทธิภาพ เรียนรู้ง่าย และสามารถทำงานบนแพลตฟอร์มต่าง ๆ ได้มากมาย สำหรับโปรเจกต์นี้ทางคณะผู้จัดทำได้ใช้ภาษา Python เพื่อการเก็บรวบรวมข้อมูลโดยการทำ Web-Scraping และพัฒนาในส่วนของ AI Chatbot
+
+\subsection{JavaScript}
+ภาษา JavaScript \cite{javascript, nodejs} เป็นภาษาโปรแกรมที่นักพัฒนาใช้ในการสร้างหน้าเว็บแบบอินเทอร์แอคทีฟ ตั้งแต่การรีเฟรชฟีดสื่อโซเชียลไปจนถึงการแสดงภาพเคลื่อนไหวและแผนที่แบบอินเทอร์แอคทีฟ ฟังก์ชันของ JavaScript สามารถปรับปรุงประสบการณ์ที่ผู้ใช้จะได้รับจากการใช้งานเว็บไซต์ และในฐานะที่เป็นภาษาในการเขียนสคริปต์ฝั่งไคลเอ็นต์ จึงเป็นหนึ่งในเทคโนโลยีหลักของ World Wide Web สำหรับโปรเจกต์นี้ทางคณะผู้จัดทำได้ใช้ภาษา JavaScript เพื่อทำหน้าเว็บแอปพลิเคชันสำหรับการใช้งาน AI Chatbot
+
+\subsection{Next.js}
+Next.js \cite{nextjs} เป็น Framework สำหรับพัฒนาเว็บแอปพลิเคชันใน JavaScript ที่ใช้ React โดยมีคุณสมบัติเพิ่มเติม เช่น Server-Side Rendering (SSR), Static Site Generation (SSG), และระบบการนำทางที่ง่าย ช่วยให้เว็บมีประสิทธิภาพดีและสะดวกต่อการพัฒนา เหมาะสำหรับโปรเจกต์ที่มีความซับซ้อนและต้องการคุณสมบัติเพิ่มเติม สำหรับโปรเจกต์นี้ทางคณะผู้จัดทำได้ใช้ Next.js เพื่อการทำ Front-end หรือหน้าเว็บไซต์เนื่องจาก Next.js มีการจัดการข้อมูลรูปภาพและคอยจัดการ API route ต่าง ๆ ได้เป็นอย่างดี
+
+\subsection{Node.js}
+Node.js \cite{nodejs} เป็นชุดเครื่องมือในการแปลคำสั่งของ JavaScript และเป็น JavaScript Runtime Environment สามารถใช้ในการพัฒนาเว็บแอปพลิเคชันได้ทั้ง Front-end และ Back-end สำหรับโปรเจกต์นี้ทางคณะผู้จัดทำได้ใช้ Node.js เพื่อเชื่อมต่อ API ของ OpenAI กับเว็บแอปพลิเคชันเพื่อให้ผู้ใช้งานสามารถใช้ Chatbot ในการถามคำถามได้
+
+\subsection{Axios}
+Axios \cite{axios} เป็นไลบรารี JavaScript ที่ใช้สำหรับทำ HTTP requests จากเบราว์เซอร์ไปยังเซิร์ฟเวอร์ โดย Axios มีข้อได้เปรียบหลายอย่างเมื่อเปรียบเทียบกับการใช้งาน Fetch API หรือ XMLHttpRequest ทำให้การจัดการคำของเราง่ายขึ้น มีการจัดการข้อผิดพลาด รองรับการแก้ไขคำขอและการตอบกลับ มีการยกเลิกคำขอ การแปลง JSON อัตโนมัติ และรองรับรูปแบบข้อมูลต่าง ๆ
+
+\subsection{MongoDB}
+MongoDB \cite{mongodb} เป็น Open-Source Document Database รูปแบบหนึ่งที่ใช้เป็นฐานของข้อมูลแบบ NoSQL หรือก็คือการไม่มี Relation (ความสัมพันธ์) ของตารางแบบ SQL ทั่วไปแต่จะใช้วิธีการเก็บข้อมูลให้เป็นแบบ JSON (JavaScript Object Notation) แทน โดยการบันทึกข้อมูลทุก ๆ Record ใน MongoDB ซึ่งเราจะเรียกมันว่าเป็น Document ที่จะเก็บค่าเป็น Key และ Value สำหรับโปรเจกต์นี้ทางคณะผู้จัดทำได้ใช้ MongoDB เพื่อเก็บข้อมูลแหล่งท่องเที่ยวที่มีความหลากหลายและส่วนใหญ่ข้อมูลจะเป็นแบบ long text
+
+\subsection{PostgreSQL}
+PostgreSQL \cite{postgresql} คือระบบจัดการฐานข้อมูลเชิงสัมพันธ์แบบโอเพ่นซอร์ส (RDBMS) มักเรียกสั้น ๆ ว่า 'Postgres' ซึ่งเป็นระบบฐานข้อมูล SQL (Structured Query Language) และได้รับการออกแบบมาให้จัดเก็บและจัดการกับการสืบค้นที่ซับซ้อนและข้อมูลจำนวนมากได้อย่างมีประสิทธิภาพ สำหรับโปรเจกต์นี้ทางคณะผู้จัดทำได้ใช้ PostgreSQL เพื่อเก็บข้อมูลของผู้ใช้งานที่มี Authentication และได้เข้าสู่ระบบเว็บแอปพลิเคชัน
+
+\subsection{OpenAI API}
+OpenAI API \cite{openai} เป็น application programming interfaces (APIs) ของทางบริษัท OpenAI ซึ่งเป็นองค์กรที่มีการวิจัยด้านปัญญาประดิษฐ์ชั้นนำ จัดทำขึ้นเพื่อให้นักพัฒนานั้นสามารถเข้าถึงโมเดล NLP ประสิทธิภาพสูงของ OpenAI และสามารถนำมาใช้กับแอปพลิเคชัน, ผลิตภัณฑ์, และบริการของพวกเขาเองได้ สำหรับโปรเจกต์นี้ทางคณะผู้จัดทำจะนำ OpenAI API มาใช้สำหรับการทำ Chatbot \newpage
+
+%%%%%%%%%%%%%%%%%%%%2.3%%%%%%%%%%%%%%%%%%%%
+\section{งานวิจัยที่เกี่ยวข้อง}
+
+%%%%%%%%%%%%%%%%%%%%2.3.1
+\subsection{TripAdvisor}
+TripAdvisor\cite{tripadvisor} เป็นเว็บไซต์และแอปพลิเคชันที่เกี่ยวข้องกับการท่องเที่ยว มีระบบการจองโรงแรมและ
+ทริปเที่ยวเพื่อให้ผู้ใช้สามารถจองที่พักหรือหากิจกรรมทำได้ เป็นแหล่งข้อมูลและรีวิวเกี่ยวกับที่ท่องเที่ยวทั่วโลก
+ที่รวบรวมข้อมูลเกี่ยวกับโรงแรม รีสอร์ท ร้านอาหาร สถานที่ท่องเที่ยว และกิจกรรมที่หลากหลายที่คนได้เข้าไปเยี่ยมชมพร้อมประสบการณ์ต่าง ๆ ที่ได้รับในแต่ละสถานที่ โดยผู้ใช้สามารถเขียนรีวิวเกี่ยวกับสถานที่ท่องเที่ยวที่พวกเขาไปเยี่ยมชม แบ่งปันประสบการณ์ แนะนำสิ่งที่ดีและควรทำในสถานที่นั้น รวมถึงแบ่งปันข้อมูลเกี่ยวกับค่าใช้จ่าย บริการ ความสะอาด และอื่น ๆ ที่สามารถเป็นประโยชน์ต่อนักท่องเที่ยวคนอื่นที่กำลังมองหาข้อมูลสำหรับการเดินทางของตนเอง โดยมีฟีเจอร์หลักดังนี้
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0.1mm}
+\fbox{\includegraphics[width=13cm]{./Figure/F2.1.png}}
+\caption{รูปแสดงหน้าการค้นหาสถานที่หรือกิจกรรมที่สนใจ TripAdvisor}\label{fig:F2.1}
+[ที่มา: \href{https://th.tripadvisor.com/} {https://th.tripadvisor.com/}]
+\end{figure}
+จากรูปที่~\ref{fig:F2.1} จะเห็นได้ว่าเว็บไซต์สามารถค้นหาข้อมูลเกี่ยวกับโรงแรม ร้านอาหาร สถานที่ท่องเที่ยว เที่ยวบิน หรือกิจกรรมต่าง ๆ ได้ทั่วโลก \\
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0.1mm}
+\fbox{\includegraphics[width=13cm]{./Figure/F2.2.png}}
+\caption{รูปแสดงรายละเอียดต่าง ๆ ของโรงแรมยอดนิยมในไทย}\label{fig:F2.2}
+[ที่มา: \href{https://th.tripadvisor.com/Hotels-g293915-Thailand-Hotels.html} {https://th.tripadvisor.com/Hotels-g293915-Thailand-Hotels.html}]
+\end{figure}
+จากรูปที่~\ref{fig:F2.2} จะเห็นได้ว่าเว็บไซต์สามารถสำรวจรายละเอียดของสถานที่ท่องเที่ยวต่าง ๆ ได้เช่น ที่ตั้ง งบ เวลาทำการ และคะแนนรีวิว โดยผู้ใช้งานสามารถเลือกสำรวจข้อมูลของแต่ละสถานที่ได้ ซึ่งแทบทางซ้ายสามารถเลือกตัวเลือกเพิ่มเติมเพื่อค้นหาข้อมูลที่ต้องการได้ \newpage
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0.1mm}
+\fbox{\includegraphics[width=13cm]{./Figure/F2.3.png}}
+\caption{รูปแสดงรายละเอียดการจองของโรงแรมแห่งหนึ่ง}\label{fig:F2.3}
+[ที่มา: \href{https://th.tripadvisor.com/Hotel\_Review-g293916-d20146210-Reviews-Carlton\_Hotel\_Bangkok\_Sukhumvit-Bangkok.html} {https://th.tripadvisor.com/Hotel\_Review-g293916-d20146210-Reviews-Carlton\_Hotel\_Bangkok\_Sukhumvit-Bangkok.html}]
+\end{figure}
+จากรูปที่~\ref{fig:F2.3} จะเห็นได้ว่าเว็บไซต์สามารถดูราคาและเลือกจองโรงแรม ร้านอาหารและเที่ยวบินได้ โดยบอกรายละเอียดราคาของเว็บไซต์ที่ต่าง ๆ ที่สามารถเข้าไปจองได้ และมีการแนะนำที่หลากหลายสำหรับผู้ใช้งาน \\
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0.1mm}
+\fbox{\includegraphics[width=13cm]{./Figure/F2.4.png}}
+\caption{รูปแสดงหน้าช่องทางการเขียนรีวิวสถานที่ที่ผู้ใช้ต้องการรีวิว}\label{fig:F2.4}\hspace{0.25cm}
+[ที่มา: \href{https://th.tripadvisor.com/UserReview} {https://th.tripadvisor.com/UserReview}]
+\end{figure}
+จากรูปที่~\ref{fig:F2.4} จะเห็นได้ว่าเว็บไซต์สามารถให้ผู้ใช้งานมาเขียนรีวิวเกี่ยวกับการท่องเที่ยวในสถานที่ท่องเที่ยว เพื่อให้ผู้อื่นสามารถมาอ่านข้อมูลเหล่านี้ แล้วนำไปประกอบการตัดสินใจ \newpage
+
+\noindent{โดย TripAdvisor มีข้อดีและข้อเสียดังนี้}
+
+\noindent{ข้อดี}
+\begin{itemize}
+\item มีฟีเจอร์ที่หลากหลายละเอียดและมีประโยชน์ในการหาข้อมูลเพื่อการเดินทางท่องเที่ยว มีข้อมูลของทั่วโลก และมีข้อมูลของสถานที่ที่ได้รับความนิยมอย่างละเอียด พร้อมทั้งรีวิวจากผู้ใช้งาน
+\end{itemize}
+\noindent{ข้อเสีย}
+\begin{itemize}
+\item การค้นหาสถานที่นั้นอาจไม่ได้มีประสิทธิภาพมากนักเนื่องจากการค้นหาสถานที่นั้นจะค้นหาจากคำนั้นในรีวิวเช่น ค้นหาคำว่า “ทะเลชลบุรี” ถ้าไม่มีคำว่า “ทะเลชลบุรี” อยู่ในบทความรีวิว ต่อให้สถานที่นั้นเป็นทะเลที่อยู่ในชลบุรีก็จะไม่แสดงสถานที่นั้นหลังจากผู้ใช้งานค้นหา 
+\item ในส่วนของการรีวิวนั้นสามารถเขียนได้ทั้งผู้ที่เคยใช้บริการและไม่เคยใช้บริการทำให้ความน่าเชื่อถือของรีวิวมีไม่มากพอที่จะเชื่อถือได้ทั้งหมด
+\item ด้วยความที่ตัวเว็บมีฟีเจอร์จำนวนมากจึงอาจต้องใช้เวลาและความคุ้นชินในการใช้งาน
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%2.3.2
+\subsection{Wongnai}
+Wongnai \cite{wongnai} เป็นแพลตฟอร์มและแอปพลิเคชันที่เกี่ยวข้องกับรีวิวและข้อมูลเกี่ยวกับร้านอาหารและสถานที่ต่าง ๆ ในประเทศไทย ซึ่งเป็นแหล่งข้อมูลที่ให้ข้อมูลเกี่ยวกับรสชาติอาหาร บรรยากาศ บริการ และราคาของร้านอาหารในพื้นที่ต่าง ๆ โดยผู้ใช้ Wongnai สามารถเขียนรีวิวเกี่ยวกับร้านอาหารที่พวกเขาเคยไปเยี่ยมชม และแบ่งปันประสบการณ์ในการรับประทานอาหาร รวมถึงแนะนำเมนูและข้อมูลที่เป็นประโยชน์สำหรับผู้ใช้คนอื่นที่กำลังมองหาข้อมูลเพื่อการเลือกร้านอาหารหรือสถานที่ในการเดินทางของตน นอกจากนี้ Wongnai ยังเสนอบริการจองโต๊ะร้านอาหารออนไลน์และสิ่งอำนวยความสะดวกอื่น ๆ ที่เกี่ยวข้องกับสถานที่รับประทานอาหารและการเลือกร้านอาหารในประเทศไทย โดยมีฟีเจอร์หลักดังนี้
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0.1mm}
+\fbox{\includegraphics[width=13cm]{./Figure/F2.5.png}}
+\caption{รูปแสดงหน้าจอ Wongnai Homepage}\label{fig:F2.5}
+[ที่มา: \href{https://www.wongnai.com/} {https://www.wongnai.com/}]
+\end{figure}
+จากรูปที่~\ref{fig:F2.5} จะเห็นได้ว่าเว็บไซต์สามารถค้นหาร้านอาหาร คาเฟ่และสถานที่ท่องเที่ยวทั่วประเทศ โดยมีตัวเลือกต่าง ๆ เพื่อตอบสนองความต้องการของผู้ใช้งาน และมีการแนะนำที่หลากหลายสำหรับผู้ใช้งาน \newpage
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0.1mm}
+\fbox{\includegraphics[width=13cm]{./Figure/F2.6.png}}
+\caption{รูปแสดงรายละเอียดต่าง ๆ ของร้านอาหารยอดนิยมในไทย}\label{fig:F2.6}
+[ที่มา: \href{https://www.wongnai.com/restaurants?features.open=true\&features.delivery=1\&page.number=1\&page.size=10\&rerank=true\&domain=1\&features.foodOrder=true} {https://www.wongnai.com/restaurants?features.open=true\&features.delivery=1\&page.number=1\&page.size=10\&rerank=true\&domain=1\&features.foodOrder=true}]
+\end{figure}
+จากรูปที่~\ref{fig:F2.6} จะเห็นได้ว่าเว็บไซต์สามารถสำรวจรายละเอียดของร้านอาหารและคาเฟ่แต่ละร้าน ได้เช่น ราคา ลักษณะร้าน เมนู ที่ตั้ง เวลาทำการ คะแนนรีวิว โดยแทบทางซ้ายสามารถคัดกรองหรือค้นหาตามความต้องการของผู้ใช้งาน และแถบตรงกลางจะแสดงข้อมูลร้านอาหารและคาเฟ่ ซึ่งสามารถสั่งอาหารแบบเดลิเวอรี่โดย Lineman ได้ \\
+
+\noindent{โดย Wongnai มีข้อดีและข้อเสียดังนี้}
+
+\noindent{ข้อดี}
+\begin{itemize}
+\item สามารถบอกรายละเอียดร้านอาหาร คาเฟ่และสถานที่ท่องเที่ยวได้เป็นอย่างดี
+\item มีรีวิวเพื่อดู Feedback จากลูกค้าที่เคยไปใช้บริการ และสามารถสั่งเดลิเวอรี่จากร้านอาหารได้
+\end{itemize}
+\noindent{ข้อเสีย}
+\begin{itemize}
+\item รีวิวไม่น่าเชื่อถือทั้งหมดเนื่องจากผู้รีวิวมีโอกาสที่ไม่เคยใช้บริการแต่สามารถมารีวิวได้
+\item มีวิธีการในการคัดกรองการค้นหาที่มีปริมาณมากอาจสร้างความสับสนให้แก่ผู้ไม่เคยใช้งาน
+\item เสียเวลามากเกินไปในการค้นหาร้านอาหารหรือสถานที่ท่องเที่ยวที่อยากไป
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%2.3.3
+\subsection{ChatGPT}
+ChatGPT \cite{chatgpt} เป็นระบบปัญญาประดิษฐ์ที่ได้รับการพัฒนาโดย OpenAI โดยใช้เทคนิค Generative Pre-trained Transformer (GPT) ที่ได้รับการฝึกฝนให้เข้าใจและสร้างข้อความจากข้อมูลมนุษย์เป็นหลัก ระบบนี้มีความสามารถในการรับข้อความจากผู้ใช้และสร้างการตอบกลับที่มีความหมายและเกี่ยวข้องกัน สามารถนำไปใช้ในหลายบริบท เช่น การตอบคำถาม การสนทนา การสร้างเนื้อหา และงานอื่น ๆ โดยรายงานได้ว่า ChatGPT เป็นเครื่องมือที่ได้รับความนิยมเนื่องจากความสามารถในการสร้างข้อความที่มีคุณภาพและตอบสนองตามความต้องการของผู้ใช้ ทำให้เป็นที่นิยมในการนำไปใช้ในแอปพลิเคชันต่าง ๆ เพื่อช่วยให้ผู้ใช้ได้รับข้อมูลและคำแนะนำที่เป็นประโยชน์ในทางด้านภาษาธรรมชาติ โดยมีฟีเจอร์หลักดังนี้ \newpage
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0.1mm}
+\fbox{\includegraphics[width=13cm]{./Figure/F2.7.png}}
+\caption{รูปแสดงหน้าจอการใช้งานของ ChatGPT}\label{fig:F2.7}
+[ที่มา: \href{https://chat.openai.com/} {https://chat.openai.com/}]
+\end{figure}
+จากรูปที่~\ref{fig:F2.7} จะเห็นได้ว่า ChatGPT จะมีการรับอินพุตจากผู้ใช้งาน จากนั้นจะสร้างข้อความมาตอบคำถามให้กับผู้ใช้งาน โดยมีความเข้าใจในภาษามนุษย์ได้เป็นอย่างดี ซึ่งมีการเรียนรู้ด้วยตัวเองเพื่อพัฒนาโมเดลในการโต้ตอบ ในเว็บไซต์นี้จะสามารถให้ผู้ใช้งานเข้าไปล็อกอินใช้งานได้ ซึ่งสามารถเก็บประวัติข้อมูลการสนทนา เพื่อที่จะสามารถย้อนกลับการใช้งานใหม่ได้ในภายหลัง \\
+
+\noindent{โดย ChatGPT มีข้อดีและข้อเสียดังนี้ \cite{viewgpt}}
+
+\noindent{ข้อดี}
+\begin{itemize}
+\item มีการโต้ตอบการผู้ใช้งานได้เป็นอย่างดี โดยผลลัพธ์ข้อมูลมีความหลากหลาย เนื่องจากได้รับการฝึกอบรมเกี่ยวกับข้อมูลข้อความขนาดใหญ่ ทำให้สามารถเข้าใจการป้อนข้อมูลด้วยภาษาธรรมชาติ(Natural Language) และสร้างคำตอบที่มีคุณภาพของเสียงและสไตล์เหมือนมนุษย์
+\item ใช้งานและเข้าถึงง่ายสามารถประมวลผลข้อมูลจำนวนมากได้อย่างรวดเร็ว ทำให้เป็นเครื่องมือที่มีค่าสำหรับองค์กรที่ต้องการทำงานอัตโนมัติและปรับปรุงประสิทธิภาพการทำงาน
+\end{itemize}
+\noindent{ข้อเสีย}
+\begin{itemize}
+\item คุณภาพของเอาต์พุตที่สร้างโดย ChatGPT เกี่ยวข้องโดยตรงกับคุณภาพของข้อมูลที่ได้รับการฝึกอบรม หากข้อมูลการฝึกมีความเอนเอียงหรือไม่สอดคล้องกัน อาจส่งผลให้เอาต์พุตจากแบบจำลองทำงานได้ไม่ดีนัก
+\item มีปัญหาในการทำความเข้าใจบริบทของการสนทนาในบางครั้ง โดยเฉพาะในสถานการณ์ที่ซับซ้อน
+\item ข้อมูลรองรับถึง ค.ศ.2021 และภาษาไทยยังมีการสื่อสารที่เข้าใจยาก
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%3%%%%%%%%%%%%%%%%%%%%
+\chapter{วิธีการดำเนินงาน}
+ในส่วนของวิธีการดําเนินงาน คณะผู้จัดทําได้ทำการออกแบบโครงสร้างทางระบบที่ทางเราได้วางเอาไว้ตามวัตถุประสงค์ เป้าหมายและตามความต้องการของผู้ใช้งานที่ได้ตั้งไว้ในบทที่ 1 โดยนําสิ่งที่ได้ศึกษาค้นคว้าและข้อมูลจากแหล่งข้อมูลที่มีความเกี่ยวข้องหรือคล้ายคลึงกันในบทที่ 2 มาวิเคราะห์และใช้ประกอบในการออกแบบมาตอบโจทย์ผู้ใช้งาน รวมถึงการจัดการภายในระบบที่ออกแบบมาได้เหมาะสม
+
+%%%%%%%%%%%%%%%%%%%%3.1%%%%%%%%%%%%%%%%%%%%
+\section{รายละเอียดโครงงาน}
+%%%%%%%%%%%%%%%%%%%%3.1.1
+\subsection{ความต้องการของระบบ}
+ในโครงงานนี้เป็นเว็บแอปพลิเคชันที่ให้บริการ AI Chatbot ที่ผ่านการเทรนเกี่ยวกับเรื่องของสถานที่ท่องเที่ยวในประเทศไทย มาใช้สำหรับการให้คำตอบเกี่ยวกับรายละเอียดของสถานที่นั้นแก่ผู้ใช้งาน หรือให้คำตอบตามที่ผู้ใช้งานต้องการอย่างแม่นยำ ถูกต้องและเข้าใจง่ายเพื่อที่จะสามารถวางแผนและประกอบการตัดสินใจก่อนการเดินทางท่องเที่ยว
+
+%%%%%%%%%%%%%%%%%%%%3.1.2
+\subsection{ขั้นตอนการทำงาน}
+ในเว็บแอปพลิเคชันนั้นสามารถเลือกได้ว่าจะใช้งานแบบล็อกอินหรือไม่ล็อกอิน โดยถ้าล็อกอินผ่านเว็บแอปพลิเคชันก็จะเก็บข้อมูลผู้ใช้งานเข้าฐานข้อมูลและเก็บประวัติการสนทนาเอาไว้ แต่ถ้าหากไม่ล็อกอินครั้งต่อไปที่เข้าใช้งานเว็บแอปพลิเคชันประวัติการสนทนาในนั้นก็จะหายไป จากนั้นก็สามารถถามคำถามเกี่ยวกับการท่องเที่ยวที่ตามความต้องได้ หลังจากสนทนาคำถามเสร็จ AI Chatbot ในเว็บแอปพลิเคชันก็จะประมวลผลออกมาเป็นผลลัพธ์ที่ตรงตามคำถามของผู้ใช้งาน โดยคำตอบที่ได้ออกมาจะขึ้นอยู่กับคำถามของผู้ใช้งานทั้งในเรื่องของขอบเขตของคำถามและลักษณะคำถามนั้น จะส่งผลให้ได้คำตอบที่แตกต่างกันออกไปในแต่ละครั้ง เช่น ตลาดนัดจตุจักรไปอย่างไร Chatbot ก็จะตอบมาเพียงแค่วิธีการไป เช่น มีรถเมล์สายไหนผ่าน หรืออาจส่งเป็น Google Map Link ไปให้ผู้ที่ถามคำถาม เป็นต้น
+
+%%%%%%%%%%%%%%%%%%%%3.2%%%%%%%%%%%%%%%%%%%%
+\section{การวิเคราะห์ความต้องการ}
+จากผลการทำแบบสำรวจพฤติกรรมและความต้องการในการท่องเที่ยว สำหรับการออกแบบเว็บไซต์แอปพลิเคชันที่มีการใช้งาน AI Chatbot จำนวน 53 คน ภายในพื้นที่สำรวจในจังหวัดกรุงเทพมหานคร ประเทศไทย 
+ซึ่งทางคณะผู้จัดทำจะนำข้อมูลมาทำการวิเคราะห์ความต้องการตามจุดประสงค์และขอบเขต ซึ่งได้ข้อค้นพบดังนี้
+%%%%%%%%%%%%%%%%%%%%3.2.1
+\subsection{ชุดข้อมูล}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.1.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับจังหวัดในประเทศไทยที่ชื่นชอบมากที่สุดของผู้ทำแบบสำรวจ}\label{fig:F3.1}
+\end{figure}
+จากรูปที่~\ref{fig:F3.1} พบว่าจังหวัดที่ผู้ทำแบบสำรวจชื่นชอบมากที่สุดคือจังหวัดเชียงใหม่ คิดเป็นร้อยละ 24.5 รองลงมาคือจังหวัดชลบุรี คิดเป็นร้อยละ 20.8
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.2.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับภูมิภาคในประเทศไทยที่ชื่นชอบของผู้ทำแบบสำรวจ}\label{fig:F3.2}
+\end{figure}
+จากรูปที่~\ref{fig:F3.2} พบว่าภูมิภาคที่ผู้ทำแบบสำรวจชื่นชอบมากที่สุดคือภาคเหนือ คิดเป็นร้อยละ 66 รองลงมาคือภาคใต้ คิดเป็นร้อยละ 45.3 \\
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.3.png}}
+\caption{รูปแสดงเกี่ยวกับรูปแบบจังหวัดที่เดินทางท่องเที่ยวของผู้ทำแบบสำรวจ}\label{fig:F3.3}
+\end{figure}
+จากรูปที่~\ref{fig:F3.3} พบว่ารูปแบบจังหวัดที่ผู้ทำแบบสำรวจมักเดินทางท่องเที่ยวมากที่สุดคือจังหวัดใกล้เคียงภายในภูมิภาค คิดเป็นร้อยละ 37.7 รองลงมาคือต่างจังหวัดคนละภูมิภาค คิดเป็นร้อยละ 32.1 และน้อยที่สุด คือภายในจังหวัดเดียวกัน คิดเป็นร้อยละ 30.2 \\
+
+จากผลการวิเคราะห์ความต้องการของขอบเขตพื้นที่ชุดข้อมูล ทางคณะผู้จัดทำพบว่าจำหวัดที่ผู้ทำแบบสำรวจมีความชื่นชอบท่องเที่ยวมากที่สุดคือจังหวัดเชียงใหม่ รองลงคือจังหวัดชลบุรี ดังรูปที่~\ref{fig:F3.1} ต่อมาพบว่าภูมิภาคที่ผู้ทำแบบสำรวจนั้นชื่นชอบท่องเที่ยวมากที่สุดคือภาคเหนือ ดังรูปที่~\ref{fig:F3.2} และสุดท้ายดังรูปที่~\ref{fig:F3.3} พบว่ารูปแบบจังหวัดที่ผู้ทำแบบสำรวจมักเดินทางท่องเที่ยวมากที่สุดคือจังหวัดใกล้เคียงที่อยู่ภายในภูมิภาค ดังนั้นทางคณะผู้จัดทำจึงได้ข้อสรุปว่าชุดข้อมูลที่เกี่ยวกับขอบเขตพื้นที่ในการท่องเที่ยวจะเริ่มใช้จากภูมิภาคของภาคเหนือก่อน ซึ่งชุดข้อมูลดังกล่าวทั้งหมดจะนำมาทำในขั้นตอนการ train AI Chatbot ต่อไป \newpage
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.4.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับประเภทของสถานที่ท่องเที่ยวที่ชื่นชอบของผู้ทำแบบสำรวจ}\label{fig:F3.4}
+\end{figure}
+จากรูปที่~\ref{fig:F3.4} พบว่าประเภทของสถานที่ท่องเที่ยวที่ผู้ทำแบบสำรวจชื่นชอบมากที่สุด อันดับหนึ่งคือทะเล/ชายหาด/เกาะ คิดเป็นร้อยละ 79.2 อันดับสองคือ ภูเขา/ น้ำตก/ ถ้ำ คิดเป็นร้อยละ 62.3 อันดับสามคือ ตลาดน้ำ/ ตลาดนัด/ ตลาดกลางคืน/ ตลาดคนเดิน คิดเป็นร้อยละ 41.5 อันดับสี่คือ พิพิธภัณฑ์/ อุทยาน คิดเป็นร้อยละ 34 และอันดับห้าคือ วัด/ โบราณสถาน คิดเป็นร้อยละ 30.2 \\
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.5.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับจุดประสงค์ในการสืบค้นข้อมูลการท่องเที่ยวของผู้ทำแบบสำรวจ}\label{fig:F3.5}
+\end{figure}
+จากรูปที่~\ref{fig:F3.5} พบว่าข้อมูลรายละเอียดที่ผู้ทำแบบสำรวจมีความต้องการน้อยสุด สำหรับการสืบค้นข้อมูลการท่องเที่ยวคือประวัติสถานที่ คิดเป็นร้อยละ 30.2 \\
+
+จากผลการวิเคราะห์ความต้องการของข้อมูลสถานที่ท่องเที่ยว ทางคณะผู้จัดทำพบว่าจะใช้ประเภทของสถานที่ท่องเที่ยวที่ผู้ทำแบบสำรวจมีความต้องการร้อยละมากกว่า 30 หรือห้าอันดับแรก ดังรูปที่~\ref{fig:F3.4} และในส่วนของรายละเอียดข้อมูลที่ต้องจัดหานั้น ทางคณะผู้จัดทำจะใช้ข้อมูลที่ผู้ทำแบบสำรวจมีความต้องการร้อยละมากกว่า 50 โดยจะเลือกรายละเอียดของข้อมูลมาใช้ทำเป็นชุดข้อมูลและข้อมูลที่มีความต้องการน้อยจะนำมาใช้ทำเป็นข้อมูลในแบบทางเลือก ดังรูปที่~\ref{fig:F3.5} ดังนั้นทางคณะผู้จัดทำจึงได้ข้อสรุปว่าจะนำข้อมูลสถานที่ท่องเที่ยวและรายละเอียดข้อมูลมาจัดทำชุดข้อมูลเพื่อใช้ในขั้นตอนการ train AI Chatbot ต่อไป
+
+%%%%%%%%%%%%%%%%%%%%3.2.2
+\subsection{การนำ AI Chatbot มาใช้งาน}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.6.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับการวางแผนก่อนเดินทางท่องเที่ยวของผู้ทำแบบสำรวจ}\label{fig:F3.6}
+\end{figure}
+จากรูปที่~\ref{fig:F3.6} พบว่าผู้ทำแบบสำรวจส่วนมากมีการวางแผนก่อนเดินทางท่องเที่ยว คิดเป็นร้อยละ 84.9 และไม่มีการวางแผนก่อนเดินทางท่องเที่ยว คิดเป็นร้อยละ 15.1 \\
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.7.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับแหล่งข้อมูลที่ใช้หาก่อนการท่องเที่ยวของผู้ทำแบบสำรวจ}\label{fig:F3.7}
+\end{figure}
+จากรูปที่~\ref{fig:F3.7} พบว่าแหล่งข้อมูลที่ผู้ทำแบบสำรวจใช้หาก่อนการท่องเที่ยวมากที่สุด อันดับหนึ่งคือ Facebook Fan page/Groups คิดเป็นร้อยละ 75.5 อันดับสองคือ TikTok คิดเป็นร้อยละ 64.2 อันดับสามคือ Instagram คิดเป็นร้อยละ 58.5 \newpage
+
+จากผลการวิเคราะห์ความต้องการ ข้อมูลที่ได้จากนั้นพบว่าผู้ทำแบบสำรวจมีการวางแผนก่อนการท่องเที่ยวมากกว่าผู้ที่ไม่วางแผนก่อนการท่องเที่ยว ดังรูปที่~\ref{fig:F3.6} ซึ่งแสดงให้เห็นว่าการหาข้อมูลและวางแผนก่อนการท่องเที่ยวนั้นเป็นสิ่งสำคัญ ดังนั้นทางคณะผู้จัดทำจึงได้นำข้อมูลนี้มาใช้เป็นฟีเจอร์ของ AI Chatbot ในการให้ข้อมูลและแนะนำสถานที่ท่องเที่ยว ต่อมาในรูปที่~\ref{fig:F3.7} แสดงให้เห็นถึงแหล่งข้อมูลที่ผู้ใช้งานนั้นใช้ค้นหาข้อมูลเกี่ยวกับสถานที่ท่องเที่ยวซึ่งพบว่า Facebook, TikTok และ Instagram นั้นเป็นแหล่งข้อมูลสามอันดับแรกที่ผู้ทำแบบสำรวจใช้ค้นหาข้อมูลมากที่สุดตามลำดับมากกว่า Wongnai และเว็บบล็อกอื่น ๆ ซึ่งแสดงให้ถึงพฤติกรรมของผู้ทำแบบสำรวจ โดยส่วนมากจะได้รับข้อมูลจากโพสต์ของแอคเคาท์ในแต่ละแพลทฟอร์มที่ทำคอนเทนต์เกี่ยวกับการรวบรวมหรือแนะนำสถานที่ท่องเที่ยวนั้นแสดงขึ้นมายังฟีดของแอปพลิเคชันที่ผู้ใช้งานใช้ จากนั้นผู้ใช้งานจึงจะค่อยติดตามข่าวสารหรือเกิดความรู้สึกอยากท่องเที่ยวสถานที่นั้น ๆ ซึ่งสามารถบอกได้ถึงความเป็นที่รู้จักของสถานที่ท่องเที่ยวนั้นในแต่ละช่วง ดังนั้นทางคณะผู้จัดทำจึงได้ข้อสรุปว่าจะนำข้อมูลนี้มาใช้ในการให้ข้อมูลว่า AI Chatbot ของเราควรจะแนะนำในลักษณะไหนที่จะตรงตามความต้องการของผู้ใช้งานและช่วยแก้ปัญหาสำหรับผู้ที่ไม่ได้ใช้งานโซเชียลมีเดียในการหาข้อมูลสถานที่ท่องเที่ยวหรือว่าไม่ได้ติดตามข่าวสารจากแอคเคาท์ที่ทำคอนเทนต์แนะนำสถานที่ท่องเที่ยวให้สามารถหาข้อมูลได้ง่ายยิ่งขึ้น \\
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.8.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับความพึงพอใจของช่องทางค้นหาข้อมูลสำหรับผู้ทำแบบสำรวจ}\label{fig:F3.8}
+\end{figure}
+จากรูปที่~\ref{fig:F3.8} พบว่าความพึงพอใจของช่องทางค้นหาข้อมูลสำหรับผู้ทำแบบสำรวจให้คะแนนระดับดีมาก คิดเป็นร้อยละ 11.3 , ระดับดี คิดเป็นร้อยละ 45.3 , ระดับปานกลาง คิดเป็นร้อยละ 24.5 , ระดับพอใช้ คิดเป็นร้อยละ 17 และระดับไม่พอใจ คิดเป็นร้อยละ 1.9 \\
+
+จากผลการวิเคราะห์ความต้องการ ดังรูปที่~\ref{fig:F3.8} แสดงให้เห็นถึงความพึงพอใจในแหล่งข้อมูลปัจจุบันซึ่งพบว่าผู้ที่ทำแบบสำรวจนั้นมีความพึงพอใจอยู่ในระดับดีเป็นส่วนมากแต่ในระดับปานกลางกับพอใช้นั้นยังมีเปอร์เซ็นต์ที่ค่อนข้างสูงเช่นเดียวกัน เมื่อคิดเป็นสัดส่วนโดยนำระดับดีกับดีมากมารวมกันและนำระดับปานกลาง, พอใช้และไม่พอใจมารวมกันจะพบว่าเปอร์เซ็นต์ของทั้งสองลักษณะนี้ยังไม่ได้ห่างกันมากนัก ซึ่งสามารถบ่งบอกได้ว่าในปัจจุบันยังไม่ได้มีแหล่งข้อมูลที่ดีมาก ๆ จนสร้างความพึงพอให้ใจแก่ทุกคนได้ ดังนั้นทางคณะผู้จัดทำจึงได้ข้อสรุปว่าจะนำข้อมูลนี้มาใช้เพื่อพัฒนา AI Chatbot ซึ่งเป็นหนึ่งในแหล่งข้อมูลที่จะช่วยสร้างความพึงพอใจให้แก่ผู้ใช้งานมากขึ้น \newpage
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.9.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับการรู้จัก Chatbot ของผู้ทำแบบสำรวจ}\label{fig:F3.9}
+\end{figure}
+จากรูปที่~\ref{fig:F3.9} พบว่าผู้ทำแบบสำรวจส่วนมากรู้จัก Chatbot คิดเป็นร้อยละ 66 และผู้ทำแบบสำรวจที่ไม่รู้จัก Chatbot คิดเป็นร้อยละ 34 \\
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.10.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับความสะดวกในการใช้งานระหว่าง Chatbot และ Search ของผู้ทำแบบสำรวจ}\label{fig:F3.10}
+\end{figure}
+จากรูปที่~\ref{fig:F3.10} พบว่าในการค้นหาข้อมูลเกี่ยวกับการท่องเที่ยวผู้ทำแบบสำรวจมีความสะดวกในการใช้งานด้วยวิธีการ Search หาข้อมูลบนโซเซียลมีเดียมากที่สุด คิดเป็นร้อยละ 62.3 และรองลงมาจะเป็นการใช้งาน Chatbot ในสอบถามพูดคุยเพื่อค้นคว้าหาข้อมูล คิดเป็นร้อยละ 37.7 \newpage
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.11.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับความน่าสนใจในการใช้ Chatbot กับการท่องเที่ยวของผู้ทำแบบสำรวจ}\label{fig:F3.11}
+\end{figure}
+จากรูปที่~\ref{fig:F3.11} พบว่าการนำ Chatbot เกี่ยวกับการท่องเที่ยวมาใช้งานในเว็บแอปพลิเคชันของทางคณะผู้จัดทำ ซึ่งข้อเสนอนี้ทำให้ผู้ทำแบบสำรวจเลือกให้ความสนใจมากที่สุด คิดเป็นร้อยละ 71.7 และเลือกไม่ให้ความสนใจ คิดเป็นร้อยละ 0 \\
+
+จากผลการวิเคราะห์ความต้องการจะได้ข้อมูล ดังรูปที่~\ref{fig:F3.9} นั้นพบว่าผู้ทำแบบสำรวจส่วนมากรู้จัก Chatbot ต่อมาพบว่าข้อมูล ดังรูปที่~\ref{fig:F3.10} จะเห็นได้ว่าผู้ทำแบบสำรวจส่วนมากนั้นยังสะดวกกับการหาข้อมูลแบบ Search อยู่ ซึ่งสามารถบ่งบอกได้ว่าในปัจจุบันยังไม่มี Chatbot ตัวไหนมาทำงานด้านการให้ข้อมูลเกี่ยวกับการท่องเที่ยวได้ดีมากนัก ส่งผลให้ผู้คนส่วนมากยังคงสะดวกกับการ Search หาข้อมูลอยู่ ซึ่งดังรูปที่~\ref{fig:F3.11} จะแสดงให้เห็นถึงความสนใจของผู้ทำแบบสำรวจว่ามีความสนใจมากเท่าใดที่จะนำ Chatbot มาเป็นหนึ่งในแหล่งข้อมูลในการค้นหาข้อมูลการท่องเที่ยว ดังนั้นทางคณะผู้จัดทำจึงได้ข้อสรุปว่าจะสร้าง AI Chatbot ขึ้นมาเพื่อสรุปข้อมูลเกี่ยวกับการท่องเที่ยวตามความต้องการของผู้ใช้งานและช่วยลดเวลาในการ Search หาข้อมูลด้วยการให้ AI Chatbot ของทางคณะผู้จัดทำช่วยแก้ไขปัญหาให้แก่ผู้ใช้งาน
+
+%%%%%%%%%%%%%%%%%%%%3.2.3
+\subsection{ผลลัพธ์ของ AI Chatbot}
+จากผลการวิเคราะห์ความต้องการจะได้ข้อมูล ดังรูปที่~\ref{fig:F3.5} ซึ่งพบว่าข้อมูลรายละเอียดทั้งหมดนั้นจะเป็นข้อมูลที่ผู้ทำแบบสำรวจต้องการสำหรับการหาข้อมูลเพื่อใช้ในการเดินทางท่องเที่ยว โดยสามอันดับแรกคือ ราคา/ค่าใช้จ่าย, วิธีการเดินทาง และตำแหน่งสถานที่/ที่ตั้ง ตามลำดับโดยจะเห็นว่าข้อมูลรายละเอียดด้านอื่น ๆ
+ก็ไม่ได้มีความต้องการที่น้อยหรือแตกต่างมากกับสามอันดับแรก ยกเว้นข้อมูลรายละเอียดของประวัติสถานที่ ดังนั้นทางคณะผู้จัดทำจึงได้ข้อสรุปว่าจะนำข้อมูลนี้มาใช้เพื่อเป็นผลลัพธ์ที่จะให้ AI Chatbot ตอบคำถามแก่ผู้ใช้งาน โดยจะมุ่งเน้นไปที่ข้อมูลที่เกี่ยวข้องเหล่านี้มากที่สุดเท่าที่จะเป็นไปได้ \newpage
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.12.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับยานพาหนะที่ใช้ในการเดินทางของผู้ทำแบบสำรวจ}\label{fig:F3.12}
+\end{figure}
+จากรูปที่~\ref{fig:F3.12} พบว่ายานพาหนะที่ผู้ทำแบบสำรวจใช้ในการเดินทางเป็นอย่างมากคือ รถยนต์ส่วนตัว คิดเป็นร้อยละ 79.2 รองลงมาคือ รถโดยสารสาธารณะ คิดเป็นร้อยละ 58.5 \\
+
+จากผลการวิเคราะห์ความต้องการจะได้ข้อมูล ดังรูปที่~\ref{fig:F3.12} ซึ่งเป็นข้อมูลที่บ่งบอกว่าผู้ทำแบบสำรวจนั้นใช้งานพาหนะใดเป็นส่วนมากในการเดินทางท่องเที่ยวโดย 2 อันดับแรก คือ รถยนต์ส่วนตัวและรถโดยสารสาธารณะตามลำดับ ดังนั้นทางคณะผู้จัดทำจึงได้ข้อสรุปว่าจะนำข้อมูลนี้มาใช้ในส่วนที่เป็นแหล่งอ้างอิงสำหรับการให้ผลลัพธ์ของ AI Chatbot สำหรับวิธีการเดินทางจะมุ่งเน้นไปที่รถโดยสารสาธารณะ เช่น รถตู้ รถเมล์ รถไฟฟ้า และรถยนต์ส่วนตัว \\
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.13.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับจำนวนวันในการท่องเที่ยวแต่ละครั้งในประเทศไทยของผู้ทำแบบสำรวจ}\label{fig:F3.13}
+\end{figure}
+จากรูปที่~\ref{fig:F3.13} พบว่าจำนวนวันที่ผู้ทำแบบสำรวจเดินทางท่องเที่ยวแต่ละครั้งมากที่สุด อันดับหนึ่งคือ 2-3 วัน คิดเป็นร้อยละ 69.8 อันดับสองคือ 4-7 วัน คิดเป็นร้อยละ 18.9 และอันดับสามคือ 1 วัน คิดเป็นร้อยละ 11.3 และอันดับสี่คือ มากกว่า 7 วัน คิดเป็นร้อยละ 0 \newpage
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.14.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับจำนวนคนในการท่องเที่ยวแต่ละครั้งของผู้ทำแบบสำรวจ}\label{fig:F3.14}
+\end{figure}
+จากรูปที่~\ref{fig:F3.14} พบว่าจำนวนคนที่ผู้ทำแบบสำรวจเดินทางท่องเที่ยวแต่ละครั้งมากที่สุด อันดับหนึ่งคือ 3-5 คน คิดเป็นร้อยละ 67.9 อันดับสองคือ 2 คน คิดเป็นร้อยละ 13.2 อันดับสามคือ 1 วัน คิดเป็นร้อยละ 9.4 อันดับสี่คือ 6-9 คน คิดเป็นร้อยละ 7.5 และอันดับห้าคือ มากกว่า 10 คน คิดเป็นร้อยละ 1.9 \\
+
+จากผลการวิเคราะห์ความต้องการจะได้ข้อมูล ดังรูปที่~\ref{fig:F3.13} และรูปที่~\ref{fig:F3.14} ซึ่งเป็นข้อมูลที่บ่งบอกถึงลักษณะและพฤติกรรมการเดินทางท่องเที่ยวของผู้ทำแบบสำรวจเกี่ยวกับระยะเวลาและจำนวนคนร่วมทาง ซึ่งในข้อมูลนี้จะเห็นว่าส่วนมากมักจะท่องเที่ยวกัน 2-3 วัน โดยมีสมาชิกเดินทางอยู่ที่ 3-5 คน ดังนั้นทางคณะผู้จัดทำจึงได้ข้อสรุปว่าข้อมูลเหล่านี้สามารถนำไปใช้สำหรับการแสดงผลลัพธ์ของ AI Chatbot ได้ โดยจะใช้เป็นปัจจัยในการกำหนดขอบเขตของสถานที่ที่จะถูกแสดงโดย AI Chatbot อย่างเช่นสถานที่ที่สามารถทำกิจกรรม 3-5 คนได้ดีอย่างชายหาดหรือการตั้งแคมป์บนภูเขา และยังสามารถพักค้างคืนได้เพื่อหากิจกรรมทำด้วยกันในสมาชิกที่ร่วมเดินทางอีกด้วย \\
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.15.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับจำนวนสถานที่เที่ยวที่ไปในแต่ละครั้งในประเทศไทยของผู้ทำแบบสำรวจ}\label{fig:F3.15}
+\end{figure}
+จากรูปที่~\ref{fig:F3.15} พบว่าจำนวนสถานที่เที่ยวที่ผู้ทำแบบสำรวจเดินทางท่องเที่ยวแต่ละครั้งมากที่สุด อันดับหนึ่งคือ 2-3 สถานที่ คิดเป็นร้อยละ 60.4 อันดับสองคือ 4-7 สถานที่ คิดเป็นร้อยละ 30.2 และอันดับสามคือ 1 สถานที่ คิดเป็นร้อยละ 9.4 และอันดับสี่คือ มากกว่า 7 สถานที่ คิดเป็นร้อยละ 0 \newpage
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.16.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับจำนวนงบประมาณในการท่องเที่ยวแต่ละครั้งของผู้ทำแบบสำรวจ}\label{fig:F3.16}
+\end{figure}
+จากรูปที่~\ref{fig:F3.16} พบว่าจำนวนคนที่ผู้ทำแบบสำรวจเดินทางท่องเที่ยวแต่ละครั้งมากที่สุด อันดับหนึ่งคือ 3,000-8,000 บาท คิดเป็นร้อยละ 49.1 อันดับสองคือ 1,000-3,000 บาท คิดเป็นร้อยละ 24.5 อันดับสามคือ 8,000-15,000 บาท คิดเป็นร้อยละ 15.1 อันดับสี่คือ มากกว่า 15,000 บาท คิดเป็นร้อยละ 7.5 และอันดับห้าคือ น้อยกว่า 1,000 บาท คิดเป็นร้อยละ 3.8 \\
+
+จากผลการวิเคราะห์ความต้องการจะได้ข้อมูล ดังรูปที่~\ref{fig:F3.15} และรูปที่~\ref{fig:F3.16} ซึ่งเป็นข้อมูลที่บ่งบอกถึงจำนวนสถานที่ท่องเที่ยวที่ผู้ทำแบบสำรวจนั้นได้ไปท่องเที่ยวในการเดินทางท่องเที่ยว 1 ครั้ง ซึ่งข้อมูลนี้สามารถบอกได้ถึงพฤติกรรมการท่องเที่ยวของผู้ทำแบบสำรวจ รวมถึงความสอดคล้องกับงบประมาณในการท่องเที่ยวแต่ละครั้งว่าเหมาะสมหรือไม่ จะเห็นได้ว่าการเดินทางท่องเที่ยว 1 ครั้งนั้นส่วนมากจะท่องเที่ยว 2-3 สถานที่เป็นส่วนมาก และในเรื่องของงบประมาณจะอยู่ที่ 3000-8000 บาทต่อการเดินทางท่องเที่ยว 1 ครั้ง ดังนั้นทางคณะผู้จัดทำจึงได้ข้อสรุปว่าข้อมูลเหล่านี้สามารถนำไปใช้ในการแสดงผลลัพธ์ของ AI Chatbot ว่าควรจะแนะนำสถานที่กี่สถานที่และมีค่าใช้จ่ายอยู่ที่ประมาณเท่าไหร่ เพื่อช่วยในการวางแผนหรือประกอบการตัดสินใจให้แก่ผู้ใช้งาน \newpage
+
+%%%%%%%%%%%%%%%%%%%%3.3%%%%%%%%%%%%%%%%%%%%
+\section{สถาปัตยกรรมระบบ}
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0.1mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.17.png}}
+\caption{รูปแสดง System Architecture Diagram ของ AI-Web Application}\label{fig:F3.17}
+\end{figure}
+จากรูปที่~\ref{fig:F3.17} System Architecture Diagram แบ่งองค์ประกอบได้เป็น 4 ส่วนหลักดังนี้
+%%%%%%%%%%%%%%%%%%%%3.3.1
+\subsection{Front-end}
+เป็นส่วนหน้าบ้านที่แสดง Interface และติดต่อกับผู้ใช้งาน ซึ่งในโครงงานนี้ทางคณะผู้จัดทำได้เลือกใช้ Next.js เป็น Framework ในการพัฒนาระบบหน้าเว็บไซต์ โดยการทำงานหลักของหน้าเว็บไซต์แบ่งออกเป็น 5 ส่วนดังนี้
+\begin{itemize}
+\item Service หน้าสำหรับห้องสนทนาให้ผู้ใช้งานเข้าใช้งาน AI Chatbot ซึ่งเป็นหน้าหลักของเว็บแอปพลิเคชัน
+\item Settings หน้าสำหรับตั้งค่าข้อมูลของผู้ใช้งานและตั้งค่าหน้าหลักของเว็บแอปพลิเคชัน
+\item Show chat history หน้าสำหรับแสดงประวัติห้องสนทนาทั้งหมดเพื่อที่จะกลับมาดูข้อมูลภายหลัง
+\item Input Text Box ช่องสำหรับพิมพ์คำถามเพื่อที่จะถาม AI Chatbot ในหน้า Service
+\item Response answer ช่องสำหรับแสดงคำตอบที่ AI Chatbot ตอบแก่ผู้ใช้งานในหน้า Service
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%3.3.2
+\subsection{Back-end}
+เป็นส่วนหลังบ้านที่คอยจัดการระบบและการทำงานของ Front-end และเชื่อมต่อ API ของ OpenAI สำหรับการนำ AI Chatbot มาใช้ตอบคำถามโดยจะมีการทำงาน 4 ส่วนดังนี้
+\begin{itemize}
+\item Authentication เป็นระบบที่ใช้ยืนยันตัวตนของผู้ใช้งานเพื่อความปลอดภัยด้านข้อมูลของผู้ใช้งาน
+\item Data management เป็นระบบที่คอยจัดการข้อมูลของผู้ใช้งานหรือข้อมูลของ AI Chatbot และ API ต่าง ๆ
+\item Chatbot module เป็นระบบที่ใช้จัดการ AI Chatbot ทั้งการรับข้อมูลเข้ามาประมวลผลเพื่อตอบคำถามหรือการเชื่อมต่อกับ OpenAI API 
+\item Generate answer เป็นระบบการสร้างคำตอบจากคำถามที่ถูกถามและประมวลผลมาจาก Chatbot module และส่งกลับไปให้ Chatbot module นั้นตอบคำถามแก่ผู้ใช้งานบนหน้าเว็บไซต์
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%3.3.3
+\subsection{Database}
+เป็นส่วนฐานข้อมูลของระบบซึ่งจะทำงานกับส่วนของ Back-end โดยตรง โดยในโครงงานนี้จะใช้เก็บข้อมูลอย่างเดียว คือข้อมูลของผู้ใช้งานที่เข้ามาใช้งานเว็บแอปพลิเคชัน โดยมีการใช้ PostgreSQL ในการเก็บข้อมูล
+
+%%%%%%%%%%%%%%%%%%%%3.3.4
+\subsection{OpenAI API}
+เป็นการใช้ API ของ OpenAI มาใช้ในการพัฒนา AI ในการตอบคำถามแก่ผู้ใช้งาน โดยทางคณะผู้จัดทำจะนำ chat-gpt-3.5 turbo มา fine-tuning เข้ากับข้อมูลที่ทางคณะผู้จัดทำจัดเก็บมา เพื่อให้ประสิทธิภาพการตอบคำถามได้ผลลัพธ์ออกมาดีที่สุด
+
+%%%%%%%%%%%%%%%%%%%%3.4
+\section{Data Collection}
+ในการเก็บรวบรวมข้อมูลจากเว็บไซต์ ทางคณะผู้จัดทำจะใช้เทคนิค Web-Scraping เป็นวิธีการที่ใช้ในการดึงข้อมูลจากเว็บไซต์เพื่อรวบรวมข้อมูลจากเว็บไซต์ไปจัดทำชุดข้อมูลเกี่ยวกับสถานที่ท่องเที่ยวที่หลากหลาย โดยในส่วนนี้จะสรุปองค์ประกอบสำคัญของการทำ Web-Scraping ดังนี้
+%%%%%%%%%%%%%%%%%%%%3.4.1
+\subsection{Data Sources}
+การเลือกแหล่งข้อมูลที่เหมาะสมถือเป็นส่วนสำคัญของ Web-Scraping โดยแหล่งข้อมูลต้องได้รับการคัดเลือกอย่างรอบคอบเพื่อให้สอดคล้องกับงานเฉพาะที่ต้องการนำไปเทรนและปรับจูนโมเดล OpenAI API ซึ่งทางคณะผู้จัดทำจะทำการดึงข้อมูลเว็บไซต์ที่เกี่ยวกับสถานที่ท่องเที่ยวในประเทศไทย ในส่วนนี้เว็บไซต์ที่คาดว่าจะทำการ Web-Scraping ก็จะมีดังนี้
+\begin{itemize}
+\item \href{https://thai.tourismthailand.org/Search-result/attraction?sort\_by=datetime\_updated\_desc\&page=1\&perpage=15\&menu=attraction} {https://thai.tourismthailand.org}
+\item \href{https://thailandtourismdirectory.go.th/attraction?page=1\&province\_id=50} {https://thailandtourismdirectory.go.th}
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%3.4.2
+\subsection{Library}
+เนื่องจากเป็นการเก็บรวบรวมข้อมูลจากเว็บไซต์ กระบวนการนี้ทางคณะผู้จัดทำจึงเลือกใช้ไลบรารี Selenium ซึ่งเป็นเครื่องมืออันทรงพลังสำหรับการโต้ตอบกับเนื้อหาเว็บไซต์แบบไดนามิก โดยให้รายละเอียดเกี่ยวกับการกำหนดค่า การนำทาง การระบุองค์ประกอบ และกระบวนการแยกข้อมูล จัดการกับความท้าทายและการพิจารณาด้านจริยธรรมที่เกี่ยวข้องกับ Web-Scraping 
+	
+โดยไลบรารี Selenium \cite{selenium} จะได้รับการกำหนดค่าให้จำลองเว็บเบราว์เซอร์ ทำให้สามารถโต้ตอบอัตโนมัติกับเนื้อหาไดนามิกของเว็บไซต์เป้าหมายได้ ในส่วนนี้จะให้รายละเอียดเกี่ยวกับกระบวนการตั้งค่า รวมถึงการติดตั้งไลบรารี Selenium และการกำหนดค่าไดรเวอร์เว็บเพื่อให้เข้ากันได้กับเว็บเบราว์เซอร์ที่เลือก ซึ่งจะมีการใช้สั่งคำสั่งต่าง ๆ ด้วยคำสั่งภาษา Python
+
+%%%%%%%%%%%%%%%%%%%%3.4.3
+\subsection{Data Preprocessing}
+การเตรียมข้อมูลเป็นสิ่งสำคัญเพื่อทำให้ข้อมูลของเราเข้ากันได้กับความต้องการของโมเดล ซึ่งในขั้นตอนการประมวลผลข้อมูลล่วงหน้าทางคณะผู้จัดจะมีการทำอยู่ 3 ขั้นตอน
+\begin{enumerate}
+\item การทำความสะอาดข้อมูลที่ได้ดึงมาจากเว็บไซต์ เพื่อลบอักขระที่ไม่เกี่ยวข้อง แก้ไขคำที่ผิด ลบคำที่ไม่สำคัญจากข้อมูล จัดการข้อมูลที่ขาดหาย และกรณีพิเศษอื่น ๆ
+\item การเลือกข้อมูล ซึ่งเป็นขั้นตอนของการเลือกข้อมูล (ตัวแปรอิสระ) ที่มีความสอดคล้องหรือสัมพันธ์กับลักษณะข้อมูลที่เอามาใช้งาน (ตัวแปรตาม) โดยเลือกเอาเฉพาะแอตทริบิวต์ที่มีความสัมพันธ์หรือเกี่ยวข้องกับตัวแปรตามที่สนใจ เพื่อให้การวิเคราะห์ตัวแปรตามเป็นไปอย่างถูกต้องมากที่สุด
+\item การแปลงข้อมูล เพื่อให้ข้อมูลที่ได้อยู่ในรูปแบบหรือลักษณะเดียวกัน จากนั้นจึงจะนำข้อมูลที่ได้ไปใช้งานต่อ
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%3.4.4
+\subsection{Data Format}
+ชุดข้อมูลมีความสำคัญในการกำหนดประสิทธิภาพของโมเดล และการจัดเตรียมประกอบด้วยกระบวนการสำคัญหลายประการเพื่อให้แน่ใจว่ามีความเกี่ยวข้อง ความหลากหลาย และประสิทธิผล ส่วนนี้จะแสดงภาพรวมของชุดข้อมูลรวมถึงรูปแบบและกระบวนการต่าง ๆ ที่ใช้ในการดูแลจัดการเพื่อทำการเทรนโมเดล OpenAI API โดยรูปแบบชุดข้อมูลส่งผลโดยตรงต่อวิธีการประมวลผลของโมเดลและการเรียนรู้จากข้อมูล ซึ่งหลังจากเราดึงข้อมูลมาจากเว็บไซต์และเข้ากระบวนการประมวลผลข้อมูลล่วงหน้าแล้ว เราจะนำข้อมูลที่ได้นั้นไปจัดทำชุดข้อมูลซึ่งทางคณะผู้จัดทำจะทำการเก็บชุดข้อมูลไว้ด้วยกันสองแบบดังนี้
+
+แบบแรกจะเป็นการนำชุดข้อมูลที่ได้มาทำการแบ่งข้อมูลให้มีป้ายกำกับเป็นข้อมูลแต่ละประเภทของสถานที่ท่องเที่ยว เช่น ชื่อของสถานที่ ประเภทของสถานที่ ข้อมูลที่อยู่ ข้อมูลติดต่อ เวลาทำการ ลักษณะสถานที่ ประวัติของสถานที่ สิ่งอำนวยความสะดวก กิจกรรมท่องเที่ยว และข้อมูลแนะนำเพิ่มเติมอื่น ๆ ขึ้นอยู่กับแหล่งข้อมูล
+	
+แบบสองจะเป็นการนำชุดข้อมูลที่ได้มาทำการแปลงรูปแบบชุดข้อมูลรวมถึงโครงสร้างให้อยู่ในรูปแบบ JSON Lines หรือรูปแบบที่ควรสอดคล้องกับข้อกำหนดอินพุตของโมเดล ดังรูปที่~\ref{fig:F3.18} และ~\ref{fig:F3.19} ที่จะเป็นวิธีการประมวลผลของโมเดลและการเรียนรู้จากข้อมูล ในบริบทของ Fine-tuning OpenAI API \\
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.18.png}}
+\caption{รูปแสดงตัวอย่างรูปแบบ dataset ที่ใช้สำหรับโมเดลเวอร์ชันใหม่}\label{fig:F3.18}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.19.png}}
+\caption{รูปแสดงตัวอย่างรูปแบบ dataset ที่ใช้สำหรับโมเดลเวอร์ชันเก่า}\label{fig:F3.19}
+\end{figure}
+
+จากรูปที่~\ref{fig:F3.18} รูปแบบ Key messages ที่แสดง List message นี้ช่วยให้สามารถนำเสนอการแลกเปลี่ยนการสนทนาที่มี role ที่แตกต่างกัน system, user, assistant และ content ที่เกี่ยวข้อง โดยทั่วไป role system จะกำหนดบริบทหรือคุณลักษณะของ assistant ส่วน role user ก่อให้เกิดคำถามหรือ prompts ที่ใช้และ role assistant จะตอบสนอง โดยผสมผสานข้อมูลที่เป็นข้อเท็จจริงเข้ากับข้อมูลที่แตกต่างกันเล็กน้อย ตามคำอธิบายของ content ของ system และ Key content ที่ประกอบด้วย content ที่เป็นข้อเท็จจริงของ message
+
+จากรูปที่~\ref{fig:F3.19} จะมี Key prompt ที่แสดงถึงอินพุตหรือสิ่งกระตุ้นที่มอบให้กับโมเดลภาษา เป็นข้อความหรือบริบทที่ต้องการให้โมเดลสร้างการตอบกลับ โดย prompt เป็นจุดเริ่มต้นสำหรับโมเดลในการสร้างหรือเติมข้อความ และ Key completion นี้แสดงถึงเอาต์พุตที่คาดหวังที่ต้องการให้โมเดลสร้างตาม prompt ที่กำหนด
+
+จากชุดข้อมูลทั้งสองแบบข้างต้นทางคณะผู้จัดทำจะเลือกใช้ชุดข้อมูลแบบที่สองในการทำเทรนและปรับจูนโมเดลให้กับ OpenAI API เป็นหลัก \newpage
+
+%%%%%%%%%%%%%%%%%%%%3.5%%%%%%%%%%%%%%%%%%%%
+\section{Database Schema}
+%%%%%%%%%%%%%%%%%%%%3.5.1
+\subsection{โครงสร้างฐานข้อมูลแบบ SQL (ER Diagram)}
+ในส่วนของฐานข้อมูลจะใช้ SQL สำหรับการเก็บข้อมูลของผู้ใช้งานรวมไปถึงข้อมูลการแชท ข้อความต่าง ๆ รวมไปถึงประวัติห้องสนทนา โดยมี 5 ตารางดังนี้
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0.1mm}
+\fbox{\includegraphics[width=10cm]{./Figure/F3.20.png}}
+\caption{รูปแสดง ER Diagram ของฐานข้อมูลแบบ SQL}\label{fig:F3.20}
+\end{figure} \newpage
+
+\subsubsection{User}
+\begin{table}[!h]
+\caption{ตารางแสดงรายละเอียดของตารางเก็บข้อมูลส่วนตัวของผู้ใช้งาน}\label{tbl:table3.1}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{ชื่อคอลัมน์} & \textbf{คำอธิบาย}         & \textbf{ประเภท} \\ \hline
+UserID               & Id สำหรับผู้ใช้งานแต่ละคน & integer         \\ \hline
+Firstname            & ชื่อจริงของผู้ใช้งาน      & varchar         \\ \hline
+Lastname             & นามสกุลของผู้ใช้งาน       & varchar         \\ \hline
+TelNo.               & เบอร์โทรศัพท์ของผู้ใช้งาน & varchar         \\ \hline
+Email                & อีเมลล์ของผู้ใช้งาน       & varchar         \\ \hline
+Date of Birth        & วันเกิดของผู้ใช้งาน       & datetime        \\ \hline
+Address              & ที่อยู่ของผู้ใช้งาน       & varchar         \\ \hline
+Gender               & เพศ                       & varchar         \\ \hline
+Username             & username ของผู้ใช้งาน     & varchar         \\ \hline
+Password             & password ของผู้ใช้งาน     & varchar         \\ \hline
+\end{tabular}
+\end{table}
+
+\subsubsection{UserProfileAuth}
+\begin{table}[!h]
+\caption{ตารางแสดงรายละเอียดของตารางเก็บข้อมูลการยืนยันตัวตนของผู้ใช้งาน}\label{tbl:table3.2}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{ชื่อคอลัมน์} & \textbf{คำอธิบาย}                                                            & \textbf{ประเภท} \\ \hline
+UserID               & Id สำหรับผู้ใช้งานแต่ละคน                                                    & integer         \\ \hline
+ProfileID            & Id สำหรับโปรไฟล์ของผู้ใช้งาน                                                 & varchar         \\ \hline
+AccessToken          & โทเค็นที่ใช้สำหรับคำขอ API ที่ได้รับการตรวจสอบสิทธิ์ & varchar         \\ \hline
+RefreshToken         & โทเค็นที่ใช้ในการรีเฟรช access โทเค็น                & varchar         \\ \hline
+TokenExpiration      & Timestamp ที่คอยบอกเวลาหมดอายุของ access โทเค็น                              & varchar         \\ \hline
+\end{tabular}
+\end{table}
+
+\subsubsection{UserQuestions}
+\begin{table}[!h]
+\caption{ตารางแสดงรายละเอียดของตารางเก็บข้อมูลคำถามของผู้ใช้งาน}\label{tbl:table3.3}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{ชื่อคอลัมน์} & \textbf{คำอธิบาย}                                                           & \textbf{ประเภท} \\ \hline
+UserID               & Id สำหรับผู้ใช้งานแต่ละคน                                                   & integer         \\ \hline
+QuestionID           & Id สำหรับคำถามของผู้ใช้งาน                                                  & varchar         \\ \hline
+UserEnteredQuestion  & ประเภทคำถามที่ผู้ใช้งานใช้ถาม(prompt หรือ พิมพ์เอง) & varchar         \\ \hline
+Timestamp            & เวลาที่คำถามถูก input                               & timestamp       \\ \hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Chatroom}
+\begin{table}[!h]
+\caption{ตารางแสดงรายละเอียดของตารางเก็บข้อมูลของห้องสนทนา}\label{tbl:table3.4}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{ชื่อคอลัมน์} & \textbf{คำอธิบาย}                             & \textbf{ประเภท} \\ \hline
+UserID               & Id สำหรับผู้ใช้งานแต่ละคน                     & integer         \\ \hline
+ChatroomID           & Id สำหรับแต่ละห้องสนทนา                       & varchar         \\ \hline
+ChatroomName         & ชื่อของห้องสนทนา      & varchar         \\ \hline
+CreatedAt            & เวลาที่สร้างห้องสนทนา & timestamp       \\ \hline
+\end{tabular}
+\end{table} \newpage
+
+\subsubsection{Messages}
+\begin{table}[!h]
+\caption{ตารางแสดงรายละเอียดของตารางเก็บข้อมูลข้อความสนทนา}\label{tbl:table3.5}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{ชื่อคอลัมน์} & \textbf{คำอธิบาย}                                                      & \textbf{ประเภท} \\ \hline
+UserID               & Id สำหรับผู้ใช้งานแต่ละคน                                              & integer         \\ \hline
+ChatroomID           & Id สำหรับแต่ละห้องสนทนา                                                & varchar         \\ \hline
+MessageID            & Id สำหรับแต่ละข้อความ                          & varchar         \\ \hline
+Content              & เนื้อของข้อความ                                & varchar         \\ \hline
+Timestamp            & เวลาที่ข้อความถูกสร้าง                         & timestamp       \\ \hline
+MessageType          & ประเภทข้อความ(คำถามผู้ใช้งาน หรือ คำตอบของ AI) & varchar         \\ \hline
+\end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%3.6%%%%%%%%%%%%%%%%%%%%
+\section{UML Design}
+%%%%%%%%%%%%%%%%%%%%3.6.1
+\subsection{Use Case Diagram}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.21.png}}
+\caption{รูปแสดง Use Case Diagram ของ AI-Web Application}\label{fig:F3.21}
+\end{figure}
+จากรูปที่~\ref{fig:F3.21} จะเห็น Use Case Diagram ที่แสดง Use Case การทำงานของระบบทั้งหมด โดยมี Actor 3 ตำแหน่งคือ Guest User, User และ AI Chatbot โดยแต่ละตำแหน่งสามารถใช้งานระบบได้ดังนี้ \\
+
+\noindent{\textbf{\underline{Guest User}}}
+\begin{itemize}
+\item สามารถใช้งานการลงทะเบียนระบบ เพื่อที่จะสร้าง User ลงชื่อเข้าใช้งานก่อนเข้าเว็บแอปพลิเคชันได้
+\item สามารถถามคำถามกับ AI Chatbot ใน Input Text Box เพื่อหาข้อมูลเกี่ยวกับสถานที่ท่องเที่ยวได้
+\item สามารถเลือก Keyword ที่จะช่วยให้ข้อมูลคำถามที่เกี่ยวข้องหรืออยู่ในขอบเขตของคำตอบก่อนหน้าที่ผู้ใช้งานถามผ่านทางห้องสนทนา ซึ่ง Keyword จะอยู่ในรูปแบบตัวเลือก
+\item สามารถดูข้อมูลเกี่ยวกับสถานที่ท่องเที่ยวที่ยอดนิยมในการถามหรือคำแนะนำเกี่ยวกับการท่องเที่ยวได้
+\end{itemize}
+
+\noindent{\textbf{\underline{User}}}
+\begin{itemize}
+\item สามารถถามคำถามกับ AI Chatbot ใน Input Text Box เพื่อหาข้อมูลเกี่ยวกับสถานที่ท่องเที่ยวได้
+\item สามารถเลือก Keyword ที่จะช่วยให้ข้อมูลคำถามที่เกี่ยวข้องหรืออยู่ในขอบเขตของคำตอบก่อนหน้าที่ผู้ใช้งานถามผ่านทางห้องสนทนา ซึ่ง Keyword จะอยู่ในรูปแบบตัวเลือก
+\item สามารถดูข้อมูลเกี่ยวกับสถานที่ท่องเที่ยวที่ยอดนิยมในการถามหรือคำแนะนำเกี่ยวกับการท่องเที่ยวได้
+\item สามารถเข้าสู่ระบบ (Login) ออกจากระบบ (Logout) ได้
+\item สามารถตั้งค่าใช้งานได้ทั้งหน้าหลักของเว็บแอปพลิเคชันและตั้งค่าบัญชีของผู้ใช้งานได้
+\item สามารถย้อนดูประวัติแชทการสนทนากับ AI Chatbot ได้และเข้ามาใช้งานห้องสนทนาเดิมได้
+\end{itemize}
+
+\noindent{\textbf{\underline{AI Chatbot}}}
+\begin{itemize}
+\item AI Chatbot นั้นจะประมวลผลคำถามของผู้ใช้งานที่ถูกถามเข้ามาในห้องสนทนาของเว็บแอปพลิเคชัน จากนั้น AI Chatbot ก็จะ Generate คำตอบออกมาให้และแสดงไปยังห้องสนทนาของผู้ใช้งาน
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%3.6.2
+\subsection{Use Case Narrative}
+ประกอบด้วย Use Case ตามรูปที่~\ref{fig:F3.18} โดยมีรายละเอียดของแต่ละ Use Case ดังนี้
+
+\subsubsection{Sign Up}
+\begin{table}[!h]
+\caption{ตารางแสดงรายละเอียด Use Case Sign Up}\label{tbl:table3.6}
+\begin{tabular}{|l|ll|}
+\hline
+\textbf{Use Case Name}     & \multicolumn{2}{l|}{Sign Up}                                                                                                                                                                                                                                                                                                                                                                                                                                  \\ \hline
+\textbf{Actors}            & \multicolumn{2}{l|}{Guest User}                                                                                                                                                                                                                                                                                                                                                                                                                               \\ \hline
+\textbf{Goal}              & \multicolumn{2}{l|}{เพื่อให้ผู้ใช้งานสามารถลงทะเบียนระบบสร้าง User ที่ลงชื่อเข้าใช้ได้สำเร็จ}                                                                                                                                                                                                                                                                                                                                                                 \\ \hline
+\textbf{Pre-Conditions}    & \multicolumn{2}{l|}{ผู้ใช้งานจะต้องเข้าไปที่หน้าหลักของเว็บแอปพลิเคชัน}                                                                                                                                                                                                                                                                                                                                                                                       \\ \hline
+\textbf{Brief Description} & \multicolumn{1}{l|}{Actor Action}                                                                                                                                                                & System Response                                                                                                                                                                                                                                            \\ \hline
+\textbf{Main Scenario}     & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1. ผู้ใช้งานต้องเข้าไปที่หน้า Sign Upของ\\ เว็บแอปพลิเคชัน\\ 2. ผู้ใช้งานกรอกข้อมูลของผู้ใช้งานทั้งหมด\\ 3. ผู้ใช้งานกดปุ่ม Sign Up\end{tabular}} & \begin{tabular}[c]{@{}l@{}}4. ระบบนําข้อมูลที่ได้รับไปตรวจสอบกับฐานข้อมูลให้ \\ Usernameไม่ซ้ำกันและข้อมูลที่ได้รับต้องครบถ้วน\\ 5. ระบบบันทึกข้อมูลของผู้ใช้งานที่ได้เป็น User \\ แล้วลงฐานข้อมูล\\ 6. ระบบแจ้งเตือน Success ให้กับผู้ใช้งาน\end{tabular} \\ \hline
+\textbf{Exceptions}        & \multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}a. ขั้นตอนที่ 4 หาก Username ซ้ำกันหรือข้อมูลที่ได้รับไม่ครบถ้วน ระบบจะไม่บันทึกข้อมูล\\ ของผู้ใช้งานลงฐานข้อมูลได้ พร้อมแจ้งเตือน Failed ให้กับผู้ใช้งานและกลับไปขั้นตอนที่ 2\end{tabular}}                                                                                                                                                                                                                   \\ \hline
+\textbf{Postconditions}    & \multicolumn{2}{l|}{ผู้ใช้งานจะมี Username และ Password ที่สามารถ Login ผ่านเว็บแอปพลิเคชันได้}                                                                                                                                                                                                                                                                                                                                                               \\ \hline
+\end{tabular}
+\end{table} \newpage
+
+\subsubsection{Service}
+\begin{table}[!h]
+\caption{ตารางแสดงรายละเอียด Use Case View Input Text Box}\label{tbl:table3.7}
+\begin{tabular}{|l|ll|}
+\hline
+\textbf{Use Case Name}     & \multicolumn{2}{l|}{Input Text Box}                                                                                                                                                                                                                                                                                                                     \\ \hline
+\textbf{Actors}            & \multicolumn{2}{l|}{User, Guest User}                                                                                                                                                                                                                                                                                                                   \\ \hline
+\textbf{Goal}              & \multicolumn{2}{l|}{เพื่อให้ผู้ใช้งานสามารถสนทนากับ AI Chatbot ได้สำเร็จ}                                                                                                                                                                                                                                                                               \\ \hline
+\textbf{Pre-Conditions}    & \multicolumn{2}{l|}{ผู้ใช้งานจะต้องเข้าไปที่หน้าหลักของเว็บแอปพลิเคชัน}                                                                                                                                                                                                                                                                                 \\ \hline
+\textbf{Brief Description} & \multicolumn{1}{l|}{Actor Action}                                                                                                         & System Response                                                                                                                                                                                             \\ \hline
+\textbf{Main Scenario}     & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1. ผู้ใช้งานพิมพ์คำถามเกี่ยวกับ\\ สถานที่ท่องเที่ยว ในช่อง Input \\ Text Box\end{tabular}} & \begin{tabular}[c]{@{}l@{}}2. ระบบรับคำถามจากผู้ใช้งาน\\ 3. AI Chatbot ประมวลผลคำถามของผู้ใช้งาน\\ 4. AI Chatbot จะ Generate คำตอบออกมา\\ 5. ระบบนำคำตอบที่ได้ไปแสดงที่ช่อง \\ Response answer\end{tabular} \\ \hline
+\textbf{Exceptions}        & \multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}a. ขั้นตอนที่ 2 หากผู้ใช้งานพิมพ์คำถามที่มีความยาวมากไป ระบบจะไม่ประมวลผล \\ คำถามของผู้ใช้งานได้ พร้อมแจ้งเตือน Sorry, your message is too long. Please try again.\\ ให้กับผู้ใช้งาน และกลับไปขั้นตอนที่ 1\end{tabular}}                                                                                                                               \\ \hline
+\textbf{Postconditions}    & \multicolumn{2}{l|}{ผู้ใช้งานสามารถสนทนาถามคำถามเพิ่มต่อจากเดิมได้}                                                                                                                                                                                                                                                                                     \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\caption{ตารางแสดงรายละเอียด Use Case Keyword}\label{tbl:table3.8}
+\begin{tabular}{|l|ll|}
+\hline
+\textbf{Use Case Name}     & \multicolumn{2}{l|}{Keyword}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     \\ \hline
+\textbf{Actors}            & \multicolumn{2}{l|}{User, Guest User}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            \\ \hline
+\textbf{Goal}              & \multicolumn{2}{l|}{เพื่อให้ผู้ใช้งานสามารถกดเลือก Keyword เพื่อแสดงคำตอบได้สำเร็จ}                                                                                                                                                                                                                                                                                                                                                                                                                                                              \\ \hline
+\textbf{Pre-Conditions}    & \multicolumn{2}{l|}{ผู้ใช้งานจะต้องเข้าไปที่หน้าหลักของเว็บแอปพลิเคชัน}                                                                                                                                                                                                                                                                                                                                                                                                                                                                          \\ \hline
+\textbf{Brief Description} & \multicolumn{1}{l|}{Actor Action}                                                                                                                                                       & System Response                                                                                                                                                                                                                                                                                                                                        \\ \hline
+\textbf{Main Scenario}     & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1. ผู้ใช้งานพิมพ์คำถามเกี่ยวกับสถานที่\\ ท่องเที่ยวในช่อง Input Text Box\\ 5. ผู้ใช้งานสามารถกดเลือก Keyword \\ ที่ต้องการ\end{tabular}} & \begin{tabular}[c]{@{}l@{}}2. AI Chatbot นำคำตอบที่ทำการ Generate มา\\ ไปสร้างเซตข้อมูลที่เกี่ยวข้องหรืออยู่ในขอบเขต\\ ของคำตอบนั้น\\ 3. AI Chatbot นำเซตข้อมูลที่ได้มาทำการสรุปเพื่อ \\ Generate Keyword ขึ้นมา\\ 4. ระบบจะแสดงตัวเลือก Keyword ขึ้นมา\\ 6. ระบบจะแสดงคำตอบในช่อง Response answer \\ สำหรับคำตอบที่เกี่ยวข้องกับ Keyword\end{tabular} \\ \hline
+\textbf{Exceptions}        & \multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}a. ขั้นตอนที่ 5 หากผู้ใช้งานไม่กดเลือก Keyword ที่ต้องการ ระบบจะไม่แสดงคำตอบใน\\ ช่อง Response answer ให้กับผู้ใช้งานได้ และกลับไปขั้นตอนที่ 1\end{tabular}}                                                                                                                                                                                                                                                                                                                                      \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\caption{ตารางแสดงรายละเอียด Use Case View Recommendations}\label{tbl:table3.9}
+\begin{tabular}{|l|ll|}
+\hline
+\textbf{Use Case Name}     & \multicolumn{2}{l|}{View Recommendations}                                                                                                                                                                                       \\ \hline
+\textbf{Actors}            & \multicolumn{2}{l|}{User, Guest User}                                                                                                                                                                                           \\ \hline
+\textbf{Goal}              & \multicolumn{2}{l|}{เพื่อให้ผู้ใช้งานสามารถดูข้อมูลใน View Recommendations ได้สำเร็จ}                                                                                                                                           \\ \hline
+\textbf{Pre-Conditions}    & \multicolumn{2}{l|}{ผู้ใช้งานจะต้องเข้าไปที่หน้าหลักของเว็บแอปพลิเคชัน}                                                                                                                                                         \\ \hline
+\textbf{Brief Description} & \multicolumn{1}{l|}{Actor Action}                                                                                                & System Response                                                                              \\ \hline
+\textbf{Main Scenario}     & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1. ผู้ใช้งานเลือกคลิกเมนู View \\ Recommendations จากแถบ \\ Sidebar\end{tabular}} & \begin{tabular}[c]{@{}l@{}}2. ระบบนําข้อมูลจาก Database มา\\ สรุปผลให้ผู้ใช้งาน\end{tabular} \\ \hline
+\textbf{Exceptions}        & \multicolumn{2}{l|}{-}                                                                                                                                                                                                          \\ \hline
+\textbf{Postconditions}    & \multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}ผู้ใช้งานสามารถเลื่อนดูข้อมูลเกี่ยวกับสถานที่ท่องเที่ยวที่ยอดนิยมในการถาม\\ หรือคำแนะนำเกี่ยวกับการท่องเที่ยวได้\end{tabular}}                                                   \\ \hline
+\end{tabular}
+\end{table} \newpage
+
+\subsubsection{User Authentication}
+\begin{table}[!h]
+\caption{ตารางแสดงรายละเอียด Use Case Login}\label{tbl:table3.10}
+\begin{tabular}{|l|ll|}
+\hline
+\textbf{Use Case Name}     & \multicolumn{2}{l|}{Login}                                                                                                                                                                                                                                                                                                                                      \\ \hline
+\textbf{Actors}            & \multicolumn{2}{l|}{User}                                                                                                                                                                                                                                                                                                                                       \\ \hline
+\textbf{Goal}              & \multicolumn{2}{l|}{เพื่อให้ผู้ใช้งานสามารถเข้าสู่ระบบของเว็บแอปพลิเคชันได้สำเร็จ}                                                                                                                                                                                                                                                                              \\ \hline
+\textbf{Pre-Conditions}    & \multicolumn{2}{l|}{ผู้ใช้งานจะต้องเคยลงทะเบียนระบบ มี Username และ Password มาก่อน}                                                                                                                                                                                                                                                                            \\ \hline
+\textbf{Brief Description} & \multicolumn{1}{l|}{Actor Action}                                                                                                                                                         & System Response                                                                                                                                                     \\ \hline
+\textbf{Main Scenario}     & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1. ผู้ใช้งานเข้าไปที่หน้า Login ของ\\ เว็บแอปพลิเคชัน\\ 2. ผู้ใช้งานกรอก Username และ \\ Password\\ 3. ผู้ใช้งานกดปุ่ม Login\end{tabular}} & \begin{tabular}[c]{@{}l@{}}4. ระบบรับข้อมูลจากผู้ใช้งาน\\ 5. ระบบนําข้อมูลที่ได้รับไปตรวจสอบ\\ กับฐานข้อมูล\\ 6. ระบบแจ้งเตือน Success ให้กับผู้ใช้งาน\end{tabular} \\ \hline
+\textbf{Exceptions}        & \multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}a. ขั้นตอนที่ 5 หากผู้ใช้งานกรอก Username และ Password ไม่ถูกต้องระบบ\\ จะทำการแจ้งเตือน Sorry, your username or password is wrong. Please try again.\\ ให้กับผู้ใช้งาน และกลับไปขั้นตอนที่ 2\end{tabular}}                                                                                                                                                              \\ \hline
+\textbf{Postconditions}    & \multicolumn{2}{l|}{ผู้ใช้งานเข้าไปที่หน้าหลักของเว็บแอปพลิเคชัน}                                                                                                                                                                                                                                                                                               \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\caption{ตารางแสดงรายละเอียด Use Case Logout}\label{tbl:table3.11}
+\begin{tabular}{|l|ll|}
+\hline
+\textbf{Use Case Name}     & \multicolumn{2}{l|}{Logout}                                                                                                                                        \\ \hline
+\textbf{Actors}            & \multicolumn{2}{l|}{User}                                                                                                                                          \\ \hline
+\textbf{Goal}              & \multicolumn{2}{l|}{เพื่อให้ผู้ใช้งานสามารถออกจากระบบของเว็บแอปพลิเคชันได้สำเร็จ}                                                                                  \\ \hline
+\textbf{Pre-Conditions}    & \multicolumn{2}{l|}{ผู้ใช้งานจะต้องเข้าสู่ระบบก่อน}                                                                                                                \\ \hline
+\textbf{Brief Description} & \multicolumn{1}{l|}{Actor Action}                                                                                                  & System Response               \\ \hline
+\textbf{Main Scenario}     & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1. ผู้ใช้งานทำการกดปุ่ม Logout ตรง\\ ส่วน Navbar เพื่อทำการออกจากระบบ\end{tabular}} & 2. ระบบนําผู้ใช้งานออกจากระบบ \\ \hline
+\textbf{Exceptions}        & \multicolumn{2}{l|}{-}                                                                                                                                             \\ \hline
+\textbf{Postconditions}    & \multicolumn{2}{l|}{ผู้ใช้งานกลับไปยังหน้า Login ของเว็บแอปพลิเคชัน}                                                                                               \\ \hline
+\end{tabular}
+\end{table} \newpage
+
+\subsubsection{Setting}
+\begin{table}[!h]
+\caption{ตารางแสดงรายละเอียด Use Case Edit Homepage}\label{tbl:table3.12}
+\begin{tabular}{|l|ll|}
+\hline
+\textbf{Use Case Name}     & \multicolumn{2}{l|}{Edit Homepage}                                                                                                                                                                                                                                                                                                                                                                                                           \\ \hline
+\textbf{Actors}            & \multicolumn{2}{l|}{User}                                                                                                                                                                                                                                                                                                                                                                                                                    \\ \hline
+\textbf{Goal}              & \multicolumn{2}{l|}{เพื่อให้ผู้ใช้งานสามารถตั้งค่าหน้าหลักของเว็บแอปพลิเคชันได้สำเร็จ}                                                                                                                                                                                                                                                                                                                                                       \\ \hline
+\textbf{Pre-Conditions}    & \multicolumn{2}{l|}{ผู้ใช้งานจะต้องเข้าสู่ระบบก่อน}                                                                                                                                                                                                                                                                                                                                                                                          \\ \hline
+\textbf{Brief Description} & \multicolumn{1}{l|}{Actor Action}                                                                                                                                                                                                                         & System Response                                                                                                                                                                  \\ \hline
+\textbf{Main Scenario}     & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1. ผู้ใช้งานทำการกดปุ่ม Setting ตรงส่วน \\ Navbar เพื่อเข้าใช้งานการตั้งค่า\\ 2. ผู้ใช้งานทำการกดปุ่ม Edit Homepage\\ 4. ผู้ใช้งานทำการตั้งค่าหน้าหลักของ\\ เว็บแอปพลิเคชัน\\ 5. กดปุ่ม Save\end{tabular}} & \begin{tabular}[c]{@{}l@{}}3. ระบบจะแสดงหน้าต่างที่ใช้ตั้งค่าหน้าหลัก\\ ของเว็บแอปพลิเคชัน\\ 6. ระบบทำการเปลี่ยนข้อมูลหน้าหลักของ\\ เว็บแอปพลิเคชันตามที่ตั้งค่าไว้\end{tabular} \\ \hline
+\textbf{Exceptions}        & \multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}a. ขั้นตอนที่ 5 หากผู้ใช้งานกดปุ่ม Cancel หรือปิดหน้า Edit Homepage ระบบจะไม่\\ เปลี่ยนข้อมูลหน้าหลักของเว็บแอปพลิเคชันตามที่ตั้งค่าไว้ และกลับไปขั้นตอนที่ 1\end{tabular}}                                                                                                                                                                                                                   \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\caption{ตารางแสดงรายละเอียด Use Case Edit Profile}\label{tbl:table3.13}
+\begin{tabular}{|l|ll|}
+\hline
+\textbf{Use Case Name}     & \multicolumn{2}{l|}{Edit Profile}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     \\ \hline
+\textbf{Actors}            & \multicolumn{2}{l|}{User}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             \\ \hline
+\textbf{Goal}              & \multicolumn{2}{l|}{เพื่อให้ผู้ใช้งานสามารถแก้ไขข้อมูลส่วนตัวได้สำเร็จ}                                                                                                                                                                                                                                                                                                                                                                                                                                                               \\ \hline
+\textbf{Pre-Conditions}    & \multicolumn{2}{l|}{ผู้ใช้งานจะต้องเข้าสู่ระบบก่อน}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   \\ \hline
+\textbf{Brief Description} & \multicolumn{1}{l|}{Actor Action}                                                                                                                                                                                                          & System Response                                                                                                                                                                                                                                                                          \\ \hline
+\textbf{Main Scenario}     & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1. ผู้ใช้งานทำการกดปุ่ม Setting ตรงส่วน\\ Navbar เพื่อเข้าใช้งานการตั้งค่า\\ 2. ผู้ใช้งานทำการกดปุ่ม Edit Profile\\ 4. ผู้ใช้งานทำการแก้ไขข้อมูลของผู้ใช้งาน\\ 6. กดปุ่ม Save\end{tabular}} & \begin{tabular}[c]{@{}l@{}}3. ระบบจะแสดงหน้าต่างที่ใช้แก้ไขข้อมูล\\ ของผู้ใช้งาน\\ 5. ระบบนำข้อมูลที่แก้ไขไปตรวจสอบกับ\\ ฐานข้อมูลให้รูปแบบถูกและข้อมูลไม่ซ้ำกัน\\ 7. ระบบบันทึกข้อมูลลงฐานข้อมูลระบบนํา\\ ข้อมูลที่ได้รับไปตรวจสอบกับฐานข้อมูลว่า\\ Username ซ้ำกันหรือไม่\end{tabular} \\ \hline
+\textbf{Exceptions}        & \multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}a. ขั้นตอนที่ 5 หากมีรูปแบบไม่ถูกต้องหรือข้อมูลซ้ำกัน ระบบจะไม่บันทึกข้อมูลของผู้ใช้งาน\\ ลงฐานข้อมูลได้ พร้อมแจ้งเตือน Sorry, the data format is wrong. Please try again.\\ ให้กับผู้ใช้งาน และกลับไปขั้นตอนที่ 4\\ b. ขั้นตอนที่ 6 หากผู้ใช้งานกดปุ่ม Cancel หรือปิดหน้า Edit Profile ระบบจะไม่บันทึกข้อมูล\\ ของผู้ใช้งานลงฐานข้อมูลได้ และกลับไปขั้นตอนที่ 1\end{tabular}}                                                                                                                                                       \\ \hline
+\end{tabular}
+\end{table} \newpage
+
+\subsubsection{View Chat History}
+\begin{table}[!h]
+\caption{ตารางแสดงรายละเอียด Use Case View Chat History}\label{tbl:table3.14}
+\begin{tabular}{|l|ll|}
+\hline
+\textbf{Use Case Name}     & \multicolumn{2}{l|}{View Chat History}                                                                                                                                                                                                                                                                             \\ \hline
+\textbf{Actors}            & \multicolumn{2}{l|}{User}                                                                                                                                                                                                                                                                                          \\ \hline
+\textbf{Goal}              & \multicolumn{2}{l|}{เพื่อให้ผู้ใช้งานสามารถดูประวัติการสนทนาได้สำเร็จ}                                                                                                                                                                                                                                             \\ \hline
+\textbf{Pre-Conditions}    & \multicolumn{2}{l|}{ผู้ใช้งานจะต้องเข้าสู่ระบบก่อน}                                                                                                                                                                                                                                                                \\ \hline
+\textbf{Brief Description} & \multicolumn{1}{l|}{Actor Action}                                                                                                                                                                                  & System Response                                                                               \\ \hline
+\textbf{Main Scenario}     & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1. ผู้ใช้งานเลื่อนดู View Chat History \\ จากแถบ Sidebar ที่แบ่งออกเป็นแต่ละ\\ ห้องสนทนา\\ 2. ผู้ใช้งานคลิกเลือกห้องสนทนาจาก\\ เมนู View Chat History\end{tabular}} & \begin{tabular}[c]{@{}l@{}}3. ระบบนําข้อมูลประวัติการสนทนา\\ จาก Database มาแสดง\end{tabular} \\ \hline
+\textbf{Exceptions}        & \multicolumn{2}{l|}{-}                                                                                                                                                                                                                                                                                             \\ \hline
+\textbf{Postconditions}    & \multicolumn{2}{l|}{ผู้ใช้งานสามารถเลื่อนดูประวัติการสนทนาและถามคำถามในห้องสนทนานั้นได้}                                                                                                                                                                                                                           \\ \hline
+\end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%3.6.3
+\subsection{Sequence Diagram}
+\subsubsection{Login user question and answering}
+
+ขั้นตอนในการใช้งานการถามตอบกับ AI Chatbot เมื่อผู้ใช้งานทำการล็อกอินเข้าสู่เว็บไซต์ในส่วน backend หรือ system จะทำการ authentication เพื่อตรวจสอบบัญชีและข้อมูลของผู้ใช้งานหลังจากผ่านการ authentication เรียบร้อยแล้วก็จะทำการ request เพื่อสร้างห้องสนทนาเปล่าแบบอัตโนมัติ โดยข้อมูลของห้องสนทนา จะถูกเก็บไว้ในฐานข้อมูลรวมไปถึงการนำข้อมูลประวัติห้องสนทนาออกมาใช้เช่นกัน (ในกรณีที่ผู้ใช้งานเคยมีห้องสนทนาอยู่แล้ว) เมื่อล็อกอินเสร็จสิ้นจะสามารถพิมพ์ถามตอบกับ AI ในห้องสนทนาต่าง ๆ ได้ไม่ว่าจะเป็นห้องสนทนาใหม่ที่พึ่งสร้างหรือห้องสนทนาเก่าที่เคยใช้งาน ดังรูปที่~\ref{fig:F3.22}
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.22.png}}
+\caption{Sequence Diagram ของ Guest user question and answering}\label{fig:F3.22}
+\end{figure}
+
+\subsubsection{Guest user question and answering}
+
+ขั้นตอนในการถามตอบกับ AI Chatbot ของ guest user นั้นจะมีการใช้งานแบบเดียวกับ login user รวมไปถึงการสร้างห้องสนทนาเพียงแต่ข้อมูลผู้ใช้งาน ข้อมูลประวัติห้องสนทนาหรือข้อความสนทนาต่างๆจะไม่ถูกนำไปเก็บไว้ในฐานข้อมูลแต่จะถูกเก็บไว้ใน session storage แทนโดยเมื่อปิดเว็บไซต์ข้อมูลทั้งหมดก็จะหายไป ดังรูปที่~\ref{fig:F3.23}
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.23.png}}
+\caption{รูปแสดง Sequence Diagram ของ Login user question and answering}\label{fig:F3.23}
+\end{figure}
+
+\subsubsection{Keyword recommendations}
+
+ขั้นตอนในการทำงานของ keyword prompt recommendations เมื่อผู้ใช้งานได้คำถามกับ chatbot ในส่วนของ backend ก็จะนำ input คำถามส่งไปให้ยัง AI system เพื่อที่จะให้ chatbot generate คำตอบออกมาแล้วส่งกลับมายัง user interface ในขณะที่ chatbot generate คำตอบเสร็จแล้ว chatbot ก็จะนำคำตอบของตัวเองไปประมวลผลต่อเพื่อที่จะ generate keyword prompt recommendations ให้กับผู้ใช้งานพร้อมกับคำตอบโดยแต่ละใน keyword prompt นั้นจะ based on มาจากคำตอบว่าถ้าคำตอบเป็นในกรณีนี้คำถามที่ควรถามต่อไปจะเป็นคำถามแบบไหน หลังจากนั้นก็จะนำ keyword prompt ที่ได้ generate ขึ้นมาส่งกลับไปยังหน้า user interface เพื่อให้ผู้ใช้งานสามารถเลือกได้ว่าจะใช้คำถามจาก keyword prompt หรือจะพิมพ์คำถามด้วยตัวเองต่อ โดยความแตกต่างระหว่าง login user กับ guest user นั้นคือการเก็บข้อมูลที่ถ้าเป็น login user จะเก็บข้อมูลในฐานข้อมูลแต่ถ้าเป็น guest user จะเก็บข้อมูลใน session storage ดังรูปที่~\ref{fig:F3.24} และ~\ref{fig:F3.25}\newpage
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.24.png}}
+\caption{รูปแสดง Sequence Diagram ของ Keyword recommendations for user}\label{fig:F3.24}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.25.png}}
+\caption{รูปแสดง Sequence Diagram ของ Keyword recommendations for user}\label{fig:F3.25}
+\end{figure} \newpage
+
+%%%%%%%%%%%%%%%%%%%%3.7%%%%%%%%%%%%%%%%%%%%
+\section{User Interface Design}
+%%%%%%%%%%%%%%%%%%%%3.7.1
+\subsection{หน้าหลักของเว็บแอปพลิเคชัน}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.26.png}}
+\caption{รูปแสดงการออกแบบหน้าห้องสนทนาแรกของเว็บแอปพลิเคชัน}\label{fig:F3.26}
+\end{figure}
+
+จากรูปที่~\ref{fig:F3.26} หน้าหลักของเว็บแอปพลิเคชันมีรายละเอียดดังนี้
+\begin{itemize}
+\item ส่วนที่ 1 Profile and settings เป็นหน้าสำหรับตั้งค่าข้อมูลของผู้ใช้งานและตั้งค่าหน้าหลักของเว็บแอปพลิเคชัน
+\item ส่วนที่ 2 Show lists chat history เป็นหน้าสำหรับแสดงประวัติห้องสนทนาทั้งหมดเพื่อที่จะกลับมาดูข้อมูลภายหลัง
+\item ส่วนที่ 3 Service เป็นหน้าสำหรับห้องสนทนาให้ผู้ใช้งานเข้าใช้งาน AI Chatbot ซึ่งเป็นหน้าหลักของเว็บแอปพลิเคชัน
+\item ส่วนที่ 4 Input Text Box เป็นช่องสำหรับพิมพ์คำถามเพื่อที่จะถาม AI Chatbot ในหน้า Service
+\item ส่วนที่ 5 Response answer เป็นช่องสำหรับแสดงคำตอบที่ AI Chatbot ตอบแก่ผู้ใช้งานในหน้า Service
+\item ส่วนที่ 6 Create chat room เป็นปุ่มสำหรับใช้สร้างห้องสนทนาใหม่เพื่อที่จะสนทนาเรื่องใหม่กับ AI Chatbot
+\end{itemize}  \newpage
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.27.png}}
+\caption{รูปแสดงการออกแบบหน้าห้องสนทนาที่สร้างใหม่ของเว็บแอปพลิเคชัน}\label{fig:F3.27}
+\end{figure}
+จากรูปที่~\ref{fig:F3.27} เมื่อผู้ใช้งานเข้าสู่เว็บไซต์จะสร้างห้องสนทนาเปล่าโดยอัตโนมัติและยังไม่มีชื่อห้องสนทนาผู้ใช้งานจะต้องเขียนคำถามก่อนเพื่อที่จะให้ AI ประมวลผลเพื่อสร้างชื่อห้องสนทนาโดยอัตโนมัติ แต่ผู้ใช้งานสามารถแก้ไขชื่อห้องสนทนาได้ \\
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.28.png}}
+\caption{รูปแสดงการออกแบบหน้าห้องสนทนาสองของเว็บแอปพลิเคชัน}\label{fig:F3.28}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.29.png}}
+\caption{รูปแสดงการออกแบบหน้าการแจ้งเตือนการป้อนคำถามที่ยาวไปของเว็บแอปพลิเคชัน}\label{fig:F3.29}
+\end{figure}
+จากรูปที่~\ref{fig:F3.28} และ ~\ref{fig:F3.29} เมื่อผู้ใช้งานพิมพ์คำถามหรือข้อความในการสนทนายาวเกินไป AI จะไม่สามารถตอบคำถามได้และจะมี Pop-up แจ้งเตือนว่าผู้ใช้งานใส่ข้อความยาวเกินไป \\
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.30.png}}
+\caption{รูปแสดงการออกแบบหน้าการแก้ไขหน้าหลักของเว็บแอปพลิเคชัน}\label{fig:F3.30}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/F3.31.png}}
+\caption{รูปแสดงการออกแบบหน้าการแก้ไขข้อมูลของผู้ใช้งาน}\label{fig:F3.31}
+\end{figure}
+จากรูปที่~\ref{fig:F3.30} และ ~\ref{fig:F3.31} ในหน้าต่างการตั้งค่าจะมีตัวเลือกให้ปรับได้อยู่ 2 ตัวเลือกคือ general กับ profile ในส่วนของ general นั้นจะเป็นการปรับแต่งหน้า homepage ซึ่งในตอนนี้มีเพียงการเปลี่ยนธีมและการล้างประวัติห้องสนทนาทั้งหมด ในส่วนของ profile นั้นจะแสดง Display name, Username และ Email โดยจะสามารถแก้ไขได้เพียง display เท่านั้น
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%3.8%%%%%%%%%%%%%%%%%%%%
+\section{การประเมินซอฟต์แวร์}
+การประเมินซอฟต์แวร์มีการใช้แบบสอบถามในการประเมิน ซึ่งออกแบบการประเมินโดยอ้างอิงจากการประเมินแบบฮิวริสติค (Heuristic Evaluation) แบบประเมินเว็บแอปพลิเคชันนี้ประกอบไปด้วยการประเมินทั้งหมด 2 ส่วน คือส่วนเว็บแอปพลิเคชัน และส่วน AI Chatbot โดยมีรายละเอียดในการประเมินดังนี้ \\
+
+\noindent{\textbf{การประเมินส่วนของเว็บแอปพลิเคชัน}}
+\begin{enumerate}
+\item ด้าน User Interface เพื่อประเมินความสวยงามของหน้าเว็บแอปพลิเคชัน
+\item ด้าน User Experience เพื่อประเมินความเข้าใจในการใช้งานและความสะดวกรวดเร็วในการเข้าถึงข้อมูล
+\item ด้าน Feature เพื่อประเมินความครบถ้วนของฟังก์ชันการใช้งานที่ผู้ใช้งานต้องการ
+\end{enumerate}
+
+\noindent{\textbf{การประเมินส่วนของ AI Chatbot}}
+\begin{enumerate}
+\item ด้าน User Experience เพื่อประเมินความถูกต้องของผลลัพธ์ที่แสดงออกมาและความสะดวกในการใช้งานเพื่อตอบคำถามให้ข้อมูลกับผู้ใช้งาน
+\item ด้าน Feature เพื่อประเมินความครบถ้วนของฟังก์ชันการใช้งานที่ผู้ใช้งานต้องการ
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Bibliography%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% Comment this in your report to show only references you have
+%%%% cited. Otherwise, all the references below will be shown.
+%\nocite{*}
+%% Use the kmutt.bst for bibtex bibliography style 
+%% You must have cpe.bib and string.bib in your current directory.
+%% You may go to file .bbl to manually edit the bib items.
+
+% Sept, 2021 by Thanin
+% improve url breaks to prevent unnecessary big white spaces in some cases
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+% 
+
+\bibliographystyle{kmutt}
+\bibliography{string,cpe}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%% Appendix %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix{แบบสำรวจสำหรับการวิเคราะห์ความต้องการ}
+\begin{center} \large\bf แบบสำรวจสำหรับการวิเคราะห์ความต้องการ \end{center} \bigskip
+
+\noindent{\textbf{เรื่อง} พฤติกรรมและความต้องการในการท่องเที่ยว}
+
+แบบสำรวจนี้จัดทำขึ้นโดย นายกิติพัฒน์ เรืองอมรวัฒน์ และนายสัณหณัฐ พรมจรรย์ นักศึกษาชั้นปีที่ 4 ภาควิชาวิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี โดยมีจุดประสงค์เพื่อศึกษาและรวบรวมข้อมูลพฤติกรรมและความต้องการต่าง ๆ ในการออกเดินทางท่องเที่ยวของแต่ละบุคคล เพื่อใช้เป็นแนวทางในการพัฒนาระบบที่ช่วยอำนวยความสะดวกในการหาข้อมูลต่าง ๆ เกี่ยวกับการท่องเที่ยว
+
+ผลของการทำแบบสำรวจพฤติกรรมและความต้องการในการท่องเที่ยว จะเป็นข้อมูลสำหรับการออกแบบพัฒนาเว็บไซต์แอปพลิเคชันที่มีการใช้งาน AI Chatbot เพื่ออำนวยความสะดวกให้แก่ผู้ที่ต้องการเดินทางท่องเที่ยว ซึ่งข้อมูลที่ได้จะไม่ถูกนำไปเปิดเผยและใช้เพื่อการศึกษาเท่านั้น สำหรับแบบสำรวจประกอบด้วย 2 ส่วน ดังต่อไปนี้
+
+\textbf{ส่วนที่ 1}  แบบสำรวจเกี่ยวกับข้อมูลทั่วไปและข้อมูลการท่องเที่ยวทั่วไปของผู้ทำแบบสำรวจ
+
+\textbf{ส่วนที่ 2}  แบบสำรวจเกี่ยวกับพฤติกรรมและความต้องการในการท่องเที่ยวและการใช้งาน Chatbot ของผู้ทำแบบสำรวจ \\
+
+\noindent{สามารถเข้าทำแบบสำรวจได้จาก: \href{https://forms.gle/DiTVJjcEPbdqfATP6} {https://forms.gle/DiTVJjcEPbdqfATP6}} \newpage
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=15cm]{./Figure/survey1.png}}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=15cm]{./Figure/survey2.png}}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=15cm]{./Figure/survey3.png}}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=15cm]{./Figure/survey4.png}}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=15cm]{./Figure/survey5.png}}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=15cm]{./Figure/survey6.png}}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=15cm]{./Figure/survey7.png}}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=15cm]{./Figure/survey8.png}}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.1.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับเพศของผู้ทำแบบสำรวจ}\label{fig:Fก.1}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.2.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับอายุของผู้ทำแบบสำรวจ}\label{fig:Fก.2}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.3.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับอาชีพของผู้ทำแบบสำรวจ}\label{fig:Fก.3}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.4.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับรูปแบบจังหวัดที่เดินทางท่องเที่ยวของผู้ทำแบบสำรวจ}\label{fig:Fก.4}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.5.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับจังหวัดในประเทศไทยที่ชื่นชอบมากที่สุดของผู้ทำแบบสำรวจ}\label{fig:Fก.5}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.6.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับประเภทของสถานที่ท่องเที่ยวที่ชื่นชอบของผู้ทำแบบสำรวจ}\label{fig:Fก.6}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.7.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับช่วงวันที่ท่องเที่ยวของผู้ทำแบบสำรวจ}\label{fig:Fก.7}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.8.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับยานพาหนะที่ใช้ในการเดินทางของผู้ทำแบบสำรวจ}\label{fig:Fก.8}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.9.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับแหล่งข้อมูลที่ตัดสินใจท่องเที่ยวของผู้ทำแบบสำรวจ}\label{fig:Fก.9}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.10.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับการวางแผนก่อนเดินทางท่องเที่ยวของผู้ทำแบบสำรวจ}\label{fig:Fก.10}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.11.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับภูมิภาคในประเทศไทยที่ชื่นชอบของผู้ทำแบบสำรวจ}\label{fig:Fก.11}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.12.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับจำนวนการท่องเที่ยวในประเทศไทยของผู้ทำแบบสำรวจ}\label{fig:Fก.12}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.13.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับจำนวนวันในการท่องเที่ยวแต่ละครั้งในประเทศไทยของผู้ทำแบบสำรวจ}\label{fig:Fก.13}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.14.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับจำนวนคนในการท่องเที่ยวแต่ละครั้งของผู้ทำแบบสำรวจ}\label{fig:Fก.14}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.15.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับจำนวนสถานที่เที่ยวที่ไปในแต่ละครั้งในประเทศไทยของผู้ทำแบบสำรวจ}\label{fig:Fก.15}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.16.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับจำนวนงบประมาณในการท่องเที่ยวแต่ละครั้งของผู้ทำแบบสำรวจ}\label{fig:Fก.16}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.17.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับแหล่งข้อมูลที่ใช้หาก่อนการท่องเที่ยวของผู้ทำแบบสำรวจ}\label{fig:Fก.17}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.18.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับความพึงพอใจของช่องทางค้นหาข้อมูลสำหรับผู้ทำแบบสำรวจ}\label{fig:Fก.18}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.19.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับช่องทางค้นหาข้อมูลที่ชื่นชอบของผู้ทำแบบสำรวจ}\label{fig:Fก.19}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.20.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับการรู้จัก Chatbot ของผู้ทำแบบสำรวจ}\label{fig:Fก.20}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.21.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับความสะดวกในการใช้งานระหว่าง Chatbot และ Search ของผู้ทำแบบสำรวจ}\label{fig:Fก.21}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.22.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับความน่าสนใจในการใช้ Chatbot กับการท่องเที่ยวของผู้ทำแบบสำรวจ}\label{fig:Fก.22}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.23.png}}
+\caption{รูปแสดงกราฟเกี่ยวกับจุดประสงค์ในการสืบค้นข้อมูลการท่องเที่ยวของผู้ทำแบบสำรวจ}\label{fig:Fก.23}
+\end{figure}
+
+\begin{figure}[!h]\centering
+\setlength{\fboxrule}{0mm}
+\fbox{\includegraphics[width=13.5cm]{./Figure/Fก.24.png}}
+\caption{รูปแสดงตัวอย่างความคิดเห็นเพิ่มเติมเกี่ยวกับการท่องเที่ยวของผู้ทำแบบสำรวจ}\label{fig:Fก.24}
+\end{figure}
+
+\end{document}
