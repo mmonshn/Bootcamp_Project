@@ -1,0 +1,46 @@
+---
+title: "Homework Data Viz"
+author: "Sanhanat Mon"
+date: "2023-02-25"
+output: html_document
+---
+
+# Hello World
+
+This is markdown language. Today we learn a few topics in R.
+
+- databases
+- working with date
+- ggplot2
+- rmarkdown
+
+Languages | Popularity
+--------- | ----------
+Python    | High
+R         | High
+SQL       | High
+Java      | Good
+
+## Homework
+
+Explore Data frame 'Diamond' and create 5 Visualizations.
+
+### Chart 1
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+head(diamonds)
+```
+Comment what did we find in this chart?
+```{r message=FALSE, warning=FALSE}
+set.seed(99)
+ggplot(diamonds %>% sample_n(500),
+       aes(carat, price)) +
+  geom_point() +
+  geom_smooth()
+```
+
+[google](https://www.google.co.th)
+
+Add an image to this report.
+
+![image](https://images.unsplash.com/photo-1677002424307-d103e17f4bd6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80)
