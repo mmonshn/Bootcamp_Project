@@ -11,7 +11,7 @@
 
 **หน้าที่ความรับผิดชอบของนักศึกษา**
 
--	Data Visualization ข้อมูลรปภ. และการบริหารจัดการ ดูได้จาก ([Security Guard](https://github.com/monsanhanat/Portfolio/tree/main/Internship/Security%20Guard))
+-	Data Visualization ข้อมูลรปภ. และการบริหารจัดการ ดูได้จาก [Security Guard](https://github.com/monsanhanat/Portfolio/tree/main/Internship/Security%20Guard)
 -	Data preprocessing ซี่งข้อมูลมาจาก Data Lake ดูได้จาก [LPR](lpr_log), [Grafana](Grafana)
 -	Convert PDF to Excel format by Python.  ดูได้จาก [PDF to Excel](pdf_to_excel)
 -	Vehicle Detection by YOLOv8 model  ดูได้จาก [Vehicle Detection](yolov8_detect_car)
