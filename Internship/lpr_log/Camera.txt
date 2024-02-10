@@ -1,0 +1,19 @@
+WITH lpr_log_list AS(
+    SELECT
+        lg."LPR_LICENSE",
+        lg."LPR_PROVINCE",
+        ls."DISPLAY_NAME",
+        lg."LPR_CAMERA",
+        CASE
+            WHEN DATE_PART('year', (CURRENT_TIMESTAMP+INTERVAL '543 YEAR') :: TIMESTAMP) - DATE_PART('year', lg."STAMP_DATETIME") >= 543
+            THEN lg."STAMP_DATETIME"
+            ELSE lg."STAMP_DATETIME" - INTERVAL '543 YEAR'
+        END AS "STAMP_DATETIME"
+    FROM lpr_log AS lg
+    LEFT JOIN lprlist AS ls
+    ON lg."LPR_LICENSE" = ls."LICENS_PLATE"
+)
+
+SELECT DISTINCT "LPR_CAMERA"
+FROM lpr_log_list
+WHERE DATE_PART('day',CURRENT_TIMESTAMP-"STAMP_DATETIME") between 0 and 30 

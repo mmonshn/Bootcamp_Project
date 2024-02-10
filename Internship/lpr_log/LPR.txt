@@ -1,0 +1,99 @@
+WITH lpr_log_list AS(
+    SELECT
+        lg."LPR_LICENSE",
+        lg."LPR_PROVINCE",
+        ls."DISPLAY_NAME",
+        lg."LPR_CAMERA",
+        CASE
+            WHEN DATE_PART('year', (CURRENT_TIMESTAMP+INTERVAL '543 YEAR') :: TIMESTAMP) - DATE_PART('year', lg."STAMP_DATETIME") >= 543
+            THEN lg."STAMP_DATETIME"
+            ELSE lg."STAMP_DATETIME" - INTERVAL '543 YEAR'
+        END AS "STAMP_DATETIME"
+    FROM lpr_log AS lg
+    LEFT JOIN lprlist AS ls
+    ON lg."LPR_LICENSE" = ls."LICENS_PLATE"
+),
+
+camera_in_out AS(
+    SELECT
+        "LPR_LICENSE",
+        "LPR_PROVINCE",
+        "DISPLAY_NAME",
+        "LPR_CAMERA",
+        CASE
+            WHEN "LPR_CAMERA" LIKE 'camera_in%' OR "LPR_CAMERA" LIKE 'camera_visitor_in%'
+            THEN "STAMP_DATETIME"
+        END AS "TIME_IN",
+        CASE
+            WHEN "LPR_CAMERA" LIKE 'camera_out%' OR "LPR_CAMERA" LIKE 'camera_visitor_out%'
+            THEN "STAMP_DATETIME"
+        END AS "TIME_OUT"
+    FROM lpr_log_list
+    WHERE ("LPR_CAMERA" LIKE 'camera_in%'
+        OR "LPR_CAMERA" LIKE 'camera_visitor_in%'
+        OR "LPR_CAMERA" LIKE 'camera_out%'
+        OR "LPR_CAMERA" LIKE 'camera_visitor_out%')
+),
+
+time_in_out AS(
+SELECT DISTINCT ON(i."TIME_IN", o."TIME_OUT")
+-- 	ROW_NUMBER() OVER(ORDER BY i."LPR_LICENSE") AS "ROWID",
+    i."LPR_LICENSE",
+    i."LPR_PROVINCE",
+    i."DISPLAY_NAME",
+    i."LPR_CAMERA" || ', ' || o."LPR_CAMERA" AS "CAMERA_NAME",
+    i."TIME_IN" AS "ENTRY_TIME",
+--     in_table."TIME_OUT",
+--     out_table."TIME_IN",
+    o."TIME_OUT" AS "EXIT_TIME",
+    i."TIME_IN" - o."TIME_OUT" AS "TIME_DIFF"
+FROM camera_in_out AS i
+JOIN camera_in_out AS o
+ON i."LPR_LICENSE" = o."LPR_LICENSE"
+WHERE NOT (i."TIME_IN" IS NULL AND o."TIME_OUT" IS NULL)
+    AND i."TIME_OUT" IS NULL
+    AND o."TIME_IN" IS NULL
+    AND ((i."DISPLAY_NAME" = 'resident' AND
+          i."TIME_IN"::DATE = o."TIME_OUT"::DATE AND --On that day
+          i."TIME_IN"::TIME > o."TIME_OUT"::TIME)
+--         OR (i."DISPLAY_NAME" <> 'resident' AND
+--             i."TIME_IN"::DATE = o."TIME_OUT"::DATE AND --On that day
+--             i."TIME_IN"::TIME < o."TIME_OUT"::TIME)
+        OR (i."TIME_IN"::DATE > o."TIME_OUT"::DATE)) --Skip the day
+--     AND i."LPR_LICENSE" ='8กฎ1814'
+),
+
+time_min AS(
+SELECT
+    "LPR_LICENSE",
+--     "LPR_PROVINCE",
+--     "DISPLAY_NAME",
+--     "CAMERA_NAME",
+    "EXIT_TIME",
+    MIN("TIME_DIFF") AS "EXIT_DIFF"
+--     OVER(PARTITION BY "LPR_LICENSE", "LPR_PROVINCE", "DISPLAY_NAME", "CAMERA_NAME", "EXIT_TIME") --Min จะแทน column ที่ไม่ Min
+FROM time_in_out
+GROUP BY  "LPR_LICENSE","EXIT_TIME" --""LPR_LICENSE","LPR_PROVINCE","DISPLAY_NAME","CAMERA_NAME","EXIT_TIME" 
+)
+
+SELECT
+    io."LPR_LICENSE",
+    io."LPR_PROVINCE",
+    io."DISPLAY_NAME",
+    io."CAMERA_NAME",
+    tx."ENTRY_TIME",
+    io."EXIT_TIME",
+    tx."ENTRY_DIFF" AS "DIFF"
+FROM (
+-- time_max AS(
+    SELECT
+		io."LPR_LICENSE",
+        io."ENTRY_TIME",
+  	    MIN(io."TIME_DIFF") AS "ENTRY_DIFF"
+    FROM time_min AS tn
+    JOIN time_in_out AS io
+    ON io."EXIT_TIME" = tn."EXIT_TIME" AND io."TIME_DIFF" = tn."EXIT_DIFF"
+    GROUP BY  io."LPR_LICENSE", io."ENTRY_TIME"
+) AS tx
+JOIN time_in_out AS io
+ON io."ENTRY_TIME" = tx."ENTRY_TIME" AND io."TIME_DIFF" = tx."ENTRY_DIFF"

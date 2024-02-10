@@ -1,0 +1,39 @@
+WITH garden_home_village AS (
+	SELECT
+		lg."LPR_LICENSE",
+		lg."LPR_PROVINCE",
+		ls."DISPLAY_NAME",
+		CASE
+			WHEN lg."LPR_CAMERA" like 'camera_in_%' OR lg."LPR_CAMERA" like 'camera_visitor_in_%' THEN 'In' 
+			WHEN lg."LPR_CAMERA" like 'camera_out_%' OR lg."LPR_CAMERA" like 'camera_visitor_out_%' THEN 'Out' ELSE lg."LPR_CAMERA"
+		END AS "STATUS",
+		"STAMP_DATETIME"
+	FROM lpr_log lg
+	LEFT JOIN lprlist ls ON lg."LPR_LICENSE" = ls."LICENS_PLATE"
+	LEFT JOIN site st ON ls."SITE_ID" = st."ID"
+	WHERE DATE(lg."CREATE_AT") IS NOT NULL
+	AND lg."LPR_LICENSE" IS NOT NULL AND lg."LPR_LICENSE" NOT like  '%0'
+	AND lg."SITE_ID" = 1
+	AND st."SITE_DISPLAY_NAME" IS NOT NULL
+	AND ls."DISPLAY_NAME" IN ($DISPLAY_NAME)
+	ORDER BY lg."STAMP_DATETIME" DESC
+),
+
+count_lpr AS (
+SELECT
+	CASE
+		WHEN "STAMP_DATETIME" BETWEEN ($__timeFrom()) AND ($__timeTo()) THEN "LPR_LICENSE"
+	END AS "TODAY",
+	CASE
+		WHEN "STAMP_DATETIME" BETWEEN $__timeFrom()::timestamp AND ($__timeFrom()::timestamp - 2*age($__timeFrom(),$__timeTo())) THEN "LPR_LICENSE"
+	END AS "Last 30 day"
+FROM garden_home_village
+WHERE "STAMP_DATETIME" BETWEEN ($__timeFrom()) AND ($__timeTo())
+OR "STAMP_DATETIME" BETWEEN $__timeFrom()::timestamp AND ($__timeFrom()::timestamp - 2*age($__timeFrom(),$__timeTo()))
+GROUP BY "STAMP_DATETIME","LPR_LICENSE"
+)
+
+SELECT
+	COUNT("TODAY") AS "Current",
+	COUNT("Last 30 day") AS "Last"
+FROM count_lpr
