@@ -1,0 +1,130 @@
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>              insert data in Registration*/
+INSERT INTO `Registration` (`RegisID`,`StuID`,`Years`,`Semester`) VALUES
+('10003','63070501068','2020','1'),
+('10100','63070501001','2021','2'),
+('10101','63070501002','2021','2'),
+('10102','63070501017','2021','2'),
+('10103','63070501068','2021','2'),
+('10104','63070501069','2021','2');
+/*delete Re AUTO_INCREMENT
+>>  delete from Registration
+>>  truncate table Registration
+*/
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>               insert data in Student */
+INSERT INTO `Student` (`StuID`,`fname`,`lname`,`gender`,`BOD`,`DOR`,`address`,`Email`,`Pass`) VALUES
+('63070501068','sarawuth','nutcahnart','male',STR_TO_Date('2001-07-19','%Y-%m-%d'),STR_TO_Date('2019-08-10','%Y-%m-%d'),'phetchaburi','sarawuth@kmutt.ac.th','123456789'),
+('63070501017','Natad','Suwannapong','male',STR_TO_Date('2001-11-12','%Y-%m-%d'),STR_TO_Date('2019-08-10','%Y-%m-%d'),'phetchaburi','natadsuwannapong@kmutt.ac.th','5'),
+('63070501069','Sanhanat','Prommajan','male',STR_TO_Date('2002-03-14','%Y-%m-%d'),STR_TO_Date('2019-08-15','%Y-%m-%d'),'ratchaburi','sanhanat@kmutt.ac.th','mon1234'),
+('63070501001','AAA','aaa','fmale',STR_TO_Date('2002-03-14','%Y-%m-%d'),STR_TO_Date('2019-08-15','%Y-%m-%d'),'bankok','AAA@kmutt.ac.th','aaa'),
+('63070501002','BBB','bbb','fmale',STR_TO_Date('2002-03-14','%Y-%m-%d'),STR_TO_Date('2019-08-15','%Y-%m-%d'),'bankok','BBB@kmutt.ac.th','bbb');
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>                 insert data in class */
+INSERT INTO `Class` (`SubID`,`Sec`,`RoomName`,`Datetime`,`Dateday`) VALUES
+('CPE100','AB','CPE1120','8.30-11.30','Monday'),
+('CPE111','AB','CPE1120','13.30-16.30','Monday'),
+('STA301','A1','STA1120','8.30-11.30','Tuesday'),
+('GEN211','40','GEN1120','13.30-16.30','Wednesday'),
+('GEN101','20','GEN1120','8.30-11.30','Thursday'),
+('CPE101','AB','CPE1120','13.30-16.30','Thursday'),
+('CPE213','AB','CPE1121','8.30-11.30','Monday'),
+('CPE231','A','CPE1121','13.30-16.30','Monday'),
+('CPE231','B','CPE1121','13.30-16.30','Monday'),
+('CPE224','AB','CPE1121','13.30-16.30','Tuesday'),
+('STA302','A1','STA1121','8.30-11.30','Wednesday'),
+('GEN411','40','GEN1121','8.30-11.30','Thursday'),
+('GEN111','20','GEN1121','13.30-16.30','Thursday');
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>                     insert data in class_room */
+INSERT INTO `Class_room`(`RoomName`,`RoomAddress`) VALUES
+('STA1120','STA'),
+('GEN1120','GEN'),
+('CPE1120','CPE'),
+('STA1121','STA'),
+('GEN1121','GEN'),
+('CPE1121','CPE');
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>                     insert data in Professor */
+INSERT INTO `Professor`(`ProID`,`fname`,`lname`,`gender`,`BOD`,`DOR`,`address`,`Email`,`Pass`) VALUES
+('3001','AAAAA','aaaaa','male',STR_TO_Date('1975-12-9','%Y-%m-%d'),STR_TO_Date('2010-08-1','%Y-%m-%d'),'bankok','AAAAA@kmutt.ac.th','aaaaa'),
+('3002','BBBBB','bbbbb','fmale',STR_TO_Date('1970-2-21','%Y-%m-%d'),STR_TO_Date('2005-08-1','%Y-%m-%d'),'bankok','BBBBB@kmutt.ac.th','bbbbb'),
+('3003','CCCCC','ccccc','fmale',STR_TO_Date('1983-1-19','%Y-%m-%d'),STR_TO_Date('2014-06-12','%Y-%m-%d'),'chonburi','CCCCC@kmutt.ac.th','ccccc'),
+('3004','DDDDD','ddddd','fmale',STR_TO_Date('1973-11-8','%Y-%m-%d'),STR_TO_Date('2009-06-12','%Y-%m-%d'),'chonburi','DDDDD@kmutt.ac.th','ddddd'),
+('3005','EEEEE','eeeee','male',STR_TO_Date('1970-6-16','%Y-%m-%d'),STR_TO_Date('2007-08-1','%Y-%m-%d'),'bankok','EEEEE@kmutt.ac.th','eeeee'),
+('3006','FFFFF','fffff','male',STR_TO_Date('1980-5-12','%Y-%m-%d'),STR_TO_Date('2014-06-12','%Y-%m-%d'),'ratchaburi','FFFFF@kmutt.ac.th','fffff'),
+('3007','GGGGG','ggggg','fmale',STR_TO_Date('1969-12-31','%Y-%m-%d'),STR_TO_Date('2000-06-12','%Y-%m-%d'),'bankok','GGGGG@kmutt.ac.th','ggggg');
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>                      insert data in registration_grade*/
+INSERT INTO `Registration_grade` (`RegisID`,`SubID`,`Sec`,`Grade`) VALUES
+('10003','CPE100','AB','2'),
+('10003','CPE101','AB','3'),
+('10003','CPE111','AB','2.5'),
+('10003','STA301','A1','4'),
+('10003','GEN101','20','3.5'),
+('10003','GEN211','40','4'),
+('10100','CPE231','A','2'),
+('10100','CPE213','AB','3'),
+('10100','CPE224','AB','2.5'),
+('10100','STA302','A1','4'),
+('10100','GEN111','20','3.5'),
+('10100','GEN411','40','4'),
+('10101','CPE231','A','3.5'),
+('10101','CPE213','AB','2'),
+('10101','CPE224','AB','1.5'),
+('10101','STA302','A1','2.5'),
+('10101','GEN111','20','4'),
+('10101','GEN411','40','3'),
+('10102','CPE231','A','2'),
+('10102','CPE213','AB','2.5'),
+('10102','CPE224','AB','3.5'),
+('10102','STA302','A1','3.5'),
+('10102','GEN111','20','2'),
+('10102','GEN411','40','2'),
+('10103','CPE231','B','3'),
+('10103','CPE213','AB','4'),
+('10103','CPE224','AB','4'),
+('10103','STA302','A1','3.5'),
+('10103','GEN111','20','1'),
+('10103','GEN411','40','3'),
+('10104','CPE231','B','3.5'),
+('10104','CPE213','AB','4'),
+('10104','CPE224','AB','3'),
+('10104','STA302','A1','4'),
+('10104','GEN111','20','4'),
+('10104','GEN411','40','3.5');
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>                         insert data in Subject*/
+INSERT INTO `Sub` (`SubID`,`SubName`,`Credit`) VALUES
+('CPE100','BASIC COMPUTER',3),
+('CPE101','EXPLORATION',3),
+('CPE111','DISCRETE MATH',3),
+('STA301','STATISTIC1',3),
+('GEN101','PHYSICAL EDU.',1),
+('GEN211','SUFFICIENT ECO.',3),
+('CPE231','DATABASE',3),
+('CPE213','DATAMODEL',3),
+('CPE224','COMARK',3),
+('STA302','STATISTIC2',3),
+('GEN111','MAN AND ETHICS',1),
+('GEN411','PUBLIC SPEAKING',1);
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>                             insert data in Sub_Sec_Pro */
+INSERT INTO Sub_Sec_Pro (`SubID`,`Sec`,`ProID`) VALUES
+('CPE100','AB','3002'),
+('CPE231','A','3002'),
+('CPE231','B','3003'),
+('CPE101','AB','3004'),
+('CPE213','AB','3004'),
+('STA301','A1','3001'),
+('STA302','A1','3001'),
+('CPE111','AB','3005'),
+('CPE224','AB','3005'),
+('GEN101','20','3006'),
+('GEN111','20','3006'),
+('GEN211','40','3007'),
+('GEN411','40','3007');
+
+
+
+

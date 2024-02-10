@@ -1,0 +1,101 @@
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>   create database name REGISTRATION   <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+CREATE DATABASE IF NOT EXISTS  `REGISTRATION`  
+DEFAULT CHARACTER SET utf8 
+DEFAULT COLLATE utf8_general_ci;
+
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>    Create table    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>      create table professor  */
+CREATE TABLE IF NOT EXISTS `Professor`(
+`ProID` varchar(15) NOT NULL,
+`fname` varchar(15) NOT NULL,
+`lname` varchar(15) NOT NULL,
+`gender` varchar(5) NOT NULL,
+`BOD` DATE NULL,
+`DOR` DATE NULL,
+`address` varchar(55)  NULL,
+`Email` varchar(55) NOT NULL,
+`Pass` varchar(55) NOT NULL,
+PRIMARY KEY(`ProID`)
+);
+
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>create rable      class */
+CREATE TABLE IF NOT EXISTS `Class`(
+`SubID` varchar(15) NOT NULL,
+`Sec` varchar(5) NOT NULL,
+`RoomName` varchar(15) NOT NULL,
+`Datetime` varchar(15)  NULL,
+`Dateday` varchar(15)  NULL,
+PRIMARY KEY(`SubID`,`Sec`)
+);
+
+
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>create table       class_room  */
+CREATE TABLE IF NOT EXISTS `Class_room`(
+`RoomName` varchar(15) NOT NULL,
+`RoomAddress` varchar(15) NOT NULL,
+PRIMARY KEY(`RoomName`)
+);
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>create table        Registration  */
+CREATE TABLE IF NOT EXISTS `Registration`(
+`RegisID` int(15) NOT NULL,
+`StuID` varchar(15) NOT NULL,
+`Years` int(4) NOT NULL,
+`Semester` int(4) NOT NULL,
+PRIMARY KEY(`RegisID`)
+);
+
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>create table         Registration_grade */
+CREATE TABLE Registration_grade (
+`RegisID` int(15) NOT NULL,
+`SubID` varchar(15) NOT NULL,
+`Sec` varchar(5) NOT NULL,
+`Grade` decimal(4,2) NULL,
+PRIMARY KEY(`RegisID`,`SubID`,`Sec`)
+);
+
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>create table         Subject  */
+CREATE TABLE Sub (
+`SubID` varchar(15) NOT NULL,
+`SubName` varchar(15) NOT NULL,
+`Credit` int(4) NOT NULL,
+PRIMARY KEY (`SubID`)
+);
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>create table            Sub_Sec_Pro  */
+CREATE TABLE Sub_Sec_Pro (
+`SubID` varchar(15) NOT NULL,
+`Sec` varchar(15) NOT NULL,
+`ProID` varchar(15) NOT NULL,
+PRIMARY KEY(`SubID`,`Sec`,`ProID`)
+);
+
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>create table              Student */
+CREATE TABLE Student (
+`StuID` varchar(15) NOT NULL,
+`fname` varchar(15) NOT NULL,
+`lname` varchar(15) NOT NULL,
+`gender` varchar(5) NOT NULL,
+`BOD` DATE NULL,
+`DOR` DATE NULL,
+`address` varchar(55)  NULL,
+`Email` varchar(55) NOT NULL,
+`Pass` varchar(55) NOT NULL,
+PRIMARY KEY (`StuID`)
+);
+
+
+/*>>>>>>>> CHECK MALE FEMALE                       Student */
+ALTER TABLE Student
+ADD CONSTRAINT CHK_GENDER CHECK (gender IN ('male','female'))
+
+
+
+

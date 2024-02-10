@@ -1,0 +1,43 @@
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>   create view      name Pro.Teach Count.Stu       analysis 1 success */
+CREATE VIEW ProTeachStCnt AS
+SELECT  scp.ProID, p.fname, p.lname, r.Years, r.Semester, rg.SubID, sj.SubName, rg.Sec, COUNT(r.StuID) AS CountStudent
+FROM registration r, registration_grade rg, sub_sec_pro scp, professor p, sub sj
+WHERE r.RegisID = rg.RegisID AND rg.SubID = scp.SubID  AND scp.ProID = p.ProID AND rg.SubID = sj.SubID
+GROUP BY scp.ProID, p.fname, p.lname, r.Years ,r.Semester, rg.SubID, rg.Sec, sj.SubName
+
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>> create view name Watch Grade all	 analysis 2  success*/
+CREATE VIEW WatchGradeall AS
+SELECT r.RegisID, s.StuID, s.fname, s.lname, r.Years, r.Semester , sj.SubID, sj.SubName, rg.Grade, sj.Credit,rg.grade*sj.Credit AS calegrade
+FROM student s, registration r, registration_grade rg, sub sj
+WHERE s.StuID = r.StuID AND r.RegisID = rg.RegisID AND rg.SubID = sj.SubID
+GROUP BY r.RegisID, s.StuID, s.fname, s.lname, r.Years, r.Semester , sj.SubID, sj.SubName, rg.Grade, sj.Credit
+
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>   Create view      name WatchInfoClass       analysis 3  success*/
+CREATE VIEW WatchInfoClass AS
+SELECT r.StuID, r.Years, r.Semester, c.Dateday, c.Datetime, rg.SubID, sj.SubName, rg.Sec, scp.ProID, c.RoomName
+FROM registration r, registration_grade rg, class c, sub_sec_pro scp, sub sj
+WHERE r.RegisID = rg.RegisID AND rg.SubID = c.SubID AND rg.Sec = c.Sec AND c.SubID = scp.SubID AND c.Sec = scp.Sec AND rg.SubID = sj.SubID
+GROUP BY r.StuID, r.Years, r.Semester, c.Dateday, c.Datetime, rg.SubID, sj.SubName, rg.Sec, scp.ProID, c.RoomName
+
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>   Create view      name CheckStudent      */
+CREATE VIEW CheckStu AS
+SELECT   r.RegisID, r.StuID, r.Years, r.Semester, p.ProID
+FROM student s, registration r, registration_grade rg, sub_sec_pro scp, professor p
+WHERE s.StuID=r.StuID AND r.RegisID = rg.RegisID AND rg.SubID = scp.SubID  AND scp.ProID = p.ProID
+GROUP BY r.RegisID, r.StuID, r.Years, r.Semester, p.ProID;
+
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>   Create view      name Find Max Registration       */
+SELECT * FROM registration WHERE 1;
+
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>   Create view      name SubClass       */
+CREATE Subclass AS
+SELECT s.SubID,s.SubName,s.Credit,c.Sec,c.RoomName,c.Datetime,c.Dateday
+FROM sub s,class c
+WHERE s.SubID = c.SubID
+
+
