@@ -1,0 +1,11 @@
+menuId,menuName,price,typeId
+1,Pork Fried Rice,45.0,1
+2,Chicken Fried Rice,45.0,1
+3,Seafood Fried Rice,50.0,1
+4,Tom-Yam Kung,60.0,2
+5,Clear glass noodle soup,60.0,2
+6,Rice topped with stir-fried pork and basil,30.0,3
+7,Roasted duck on rice,35.0,3
+8,Pad-Thai Noodle with Seafood,50.0,4
+9,Stir-Fried Rice Noodle with Chicken in Gravy,45.0,4
+10,Stir-Fried Rice Noodle with Seafood in Gravy,50.0,4
