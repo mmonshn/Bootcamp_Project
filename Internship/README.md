@@ -8,7 +8,7 @@
 
 **Department:** Computer Engineering
 
-**Company that internship:** SKY ICT PUBLIC COMPANY LIMITED / NEBULA TECH UNIT
+**Company Internship:** SKY ICT PUBLIC COMPANY LIMITED / NEBULA TECH UNIT
 
 **Internship Between:** 1 June 2023 to 4 August 2023
 
